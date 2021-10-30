@@ -1,7 +1,7 @@
 ---
 layout: post
 title: An Efficient Local Search Algorithm for the Minimum k-Dominating Set Problem
-date: 2018-12-13 00:00:00 +00:00
+date: 2018-10-15 00:00:00 +00:00
 # image: ""
 categories: research
 author: Jun Wu
