@@ -2,6 +2,7 @@
 layout: post
 title: "Local Search for Diversified Top-k s-plex Search Problem (Student Abstract)"
 date: 2021-05-18 00:00:00 +00:00
+year: "2021"
 # image: ""
 categories: research
 author: "Jun Wu"

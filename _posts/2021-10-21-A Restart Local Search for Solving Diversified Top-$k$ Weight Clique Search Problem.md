@@ -2,6 +2,7 @@
 layout: post
 title: "A Restart Local Search for Solving Diversified Top-$k$ Weight Clique Search Problem"
 date: 2021-10-21 00:00:00 +00:00
+year: "2021"
 # image: ""
 categories: research
 author: "Jun Wu"

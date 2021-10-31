@@ -2,6 +2,7 @@
 layout: post
 title: An Efficient Heuristic Algorithm for Solving Connected Vertex Cover Problem
 date: 2018-09-06 00:00:00 +00:00
+year: "2018"
 # image: ""
 categories: research
 author: Jun Wu

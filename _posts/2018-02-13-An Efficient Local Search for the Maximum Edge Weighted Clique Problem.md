@@ -2,6 +2,7 @@
 layout: post
 title: An Efficient Local Search for the Maximum Edge Weighted Clique Problem
 date: 2018-02-13 00:00:00 +00:00
+year: "2018"
 # image: ""
 categories: research
 author: Jun Wu

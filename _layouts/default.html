@@ -35,9 +35,10 @@
 
 <style>
   body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', monospace;
     font-family: Arial, Helvetica, sans-serif;
   }
+
   /* body {
     font-family:'Lucida Console', monospace
   } */
@@ -152,15 +153,11 @@
 
           <div id="pubs">
 
+            
             <!-- <div class="text anchor">
-              <h4>2021</h4>
+              <h4>{{ post }}</h4>
             </div> -->
 
-            {% for year in site %}
-              <div class="text anchor">
-                <h4>{{ year }}</h4>
-              </div>
-            {% endfor %}
             {% for post in site.posts %}
             {% for cat in post.categories %}
             {% if cat == 'research' %}
