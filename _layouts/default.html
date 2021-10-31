@@ -152,13 +152,13 @@
 
           <div id="pubs">
 
-            <div class="text anchor">
+            <!-- <div class="text anchor">
               <!-- <h4>2021</h4> -->
-            </div>
+            </div> -->
 
-            {% for year in site %}
+            {% for year in site.date %}
               <div class="text anchor">
-                <!-- <h4>{{ year }}</h4> -->
+                <h4>{{ year }}</h4>
               </div>
             {% endfor %}
             {% for post in site.posts %}
