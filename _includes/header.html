@@ -1,0 +1,168 @@
+<body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+
+  <div class="outercontainer">
+
+    <script src="js/header.js"></script>
+    <header>
+      <div class="container header">
+        <div class="ftheader text"><a href="#home">Jun Wu</a></div>
+        <div class="ftsubheader text"><a href="#publications">Publications</a></div>
+        <div class="ftsubheader text"><a href="#home">Home</a></div>
+      </div>
+    </header>
+    <div class="container body">
+
+      <div class="content heading anchor" id="home">
+        <!-- <div class="img"><img class="img_responsive" src="images/Jun_Wu.jpg" alt="Photo"></div> -->
+        <div class="text info">
+          <h1>Jun Wu</h1>
+          <p>
+          </p>
+          <div>Ph.D.</div>
+          <div>Computer Science Department</div>
+          <div>Northeast Normal University</div>
+          <div>Email:&nbsp;wujunzero [at] gmail (dot) com</div>
+          <p>
+            <span>
+              <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs"
+                  content="https://orcid.org/0000-0002-5239-5126" href="https://orcid.org/0000-0002-5239-5126"
+                  target="orcid.widget" rel="me noopener noreferrer" style="vertical-align:top;"><img
+                    src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
+                    style="width:1em;margin-right:.5em;" alt="ORCID iD icon">https://orcid.org/0000-0002-5239-5126</a>
+              </div>
+            </span>
+          </p>
+          <p>
+            <span><a href="https://scholar.google.com/citations?user=xhn6R7EAAAAJ&amp;hl=en&amp;oi=ao">Google
+                Scholar</a></span>
+            /
+            <!-- <span class="tag"><a href="">DBLP</a></span> -->
+            <span><a href="https://github.com/wujunzero">Github</a></span>
+          </p>
+        </div>
+        <div class="text topic">
+          <p>
+          </p>
+          <div class="title">Research Topics</div>
+          <ul>
+            <li><a href="#mc" onclick="">Maximal Clique</a></li>
+            <li><a href="#vc" onclick="">Vertex Cover</a></li>
+            <li><a href="#ds" onclick="">Dominating Set</a></li>
+            <li><a href="#topk" onclick="">Diversified Top-k Clique</a></li>
+            <!-- <li><a href="#" onclick="">Diversified Top-k s-Plex (DTKSP)</a></li> -->
+          </ul>
+          <p>
+          </p>
+        </div>
+        <div class="text">
+          <p>I have broad interest in artificial intelligence and its applications.
+            My research is concerned with the practical resolution of NP-hard problems,
+            including Boolean Satisfiability problem,
+            Minimum Vertex Cover Problem,
+            Maximum Satisfiability Problem,
+            Maximum (Weight) Clique Problem,
+            Graph Coloring Problem.
+            I am particularly interested in the combinatorial problem with the heuristic algorithm and exact
+            algorithm.
+          </p>
+        </div>
+      </div>
+
+      <div class="content" style="z-index:1;position:relative">
+        <div class="text">
+          <h3 style="margin-bottom:.5em">Educations</h3> <!-- Degrees -->
+          <ul style="padding-bottom:1em">
+            <li>September 2010 - July 2014: B.Sc in computer science and technology, Jilin University, China</li>
+            <li>September 2015 - July 2017: M.Sc in computer science and technology, Northeast Normal University,
+              China</li>
+            <li>October 2018 - October 2019: Visiting Ph.D. in University of Picardie Jules Verne, France</li>
+            <li>September 2017 - Now: Ph.D in information science and technology, Northeast Normal University, China
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="content" style="z-index:1;position:relative">
+          <div class="text">
+            <h3 style="margin-bottom:.5em">Teaching</h3>
+            <ul style="padding-bottom:1em">
+              <li></li></ul>
+          </div>
+        </div> -->
+
+      <div class="content anchor" id="publications">
+        <div class="text" style="z-index:1;position:relative">
+          <h3 style="margin-bottom:0em">
+            Publications
+            <!-- (<a href="" id="select0" onclick="showPubs(0); return false;" style="">show selected</a> /
+            <a href="" id="select1" onclick="showPubs(1); return false;" style="">show all by date</a> /
+            <a href="" id="select2" onclick="showPubs(2); return false;" style="">show all by topic</a>) -->
+          </h3>
+        </div>
+
+        <br>
+        <br>
+
+        <div id="pubs">
+
+          {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+          {% for year in posts_by_year %}
+          <div class="text anchor">
+            <h4>{{ year.name }}</h4>
+          </div>
+
+          {% for post in year.items %}
+          {% for cat in post.categories %}
+          {% if cat == 'research' %}
+
+          <div class="publication">
+            {% if post.image %}
+            <div class="img"><img class="img_responsive" src="{{ post.image }}" alt=""></div>
+            {% endif %}
+            <div class="text">
+              <div class="title"><a name="">{{ post.title }}</a></div>
+              <div class="authors">
+                {% for author in post.authors %}
+                {% if author == post.author %}
+                <span class="author jw">{{ author }}</span>
+                {% else %}
+                <span class="author">{{ author }}</span>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <div>
+                {% if post.venue %}
+                <span class="venue"><a href="{{ post.venueurl }}">{{ post.venue }}</a></span> /
+                <!-- <span>{{ post.date | date: "%Y" }}</span> / -->
+                {% endif %}
+                {% if post.paper %}
+                <span class="tag"><a href="{{ post.paper }}">Paper</a></span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+          {% endfor %}
+
+          <!-- <table>
+            {% for post in site.posts %}
+            <tr>
+              <th scope="row">{{ post.date | date: "%b %-d, %Y" }}</th>
+              <td>
+                <a>{{ post.title }}</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table> -->
+
+        </div>
+
+      </div> <!-- content -->
+    </div> <!-- container -->
+  </div> <!-- outer container -->
+
+  <!-- <script>showPubs(0);</script> -->
+  <script>var scroll = new SmoothScroll('a[href*="#"]', { speed: 1000 });</script>
