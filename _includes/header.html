@@ -111,7 +111,6 @@
           <div class="text anchor">
             <h4>{{ year.name }}</h4>
           </div>
-
           {% for post in year.items %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
@@ -123,18 +122,41 @@
             <div class="text">
               <div class="title"><a name="">{{ post.title }}</a></div>
               <div class="authors">
+                {% assign author_count = page.authors | size %}
+                {% if author_count == 0 %}
+
+                {% elsif author_count == 1 %}
+                {{ post.authors | first }}
+                {% else %}
                 {% for author in post.authors %}
+                {% if forloop.first %}
                 {% if author == post.author %}
                 <span class="author jw">{{ author }}</span>
                 {% else %}
                 <span class="author">{{ author }}</span>
                 {% endif %}
+                {% elsif forloop.last %}
+                and
+                {% if author == post.author %}
+                <span class="author jw">{{ author }}</span>
+                {% else %}
+                <span class="author">{{ author }}</span>
+                {% endif %}
+                {% else %}
+                <span class="author">, </span>
+                {% if author == post.author %}
+                <span class="author jw">{{ author }}</span>
+                {% else %}
+                <span class="author">{{ author }}</span>
+                {% endif %}
+                {% endif %}
                 {% endfor %}
+                {% endif %}
               </div>
               <div>
                 {% if post.venue %}
                 <span class="venue"><a href="{{ post.venueurl }}">{{ post.venue }}</a></span> /
-                <!-- <span>{{ post.date | date: "%Y" }}</span> / -->
+                <span>{{ post.date | date: "%Y" }}</span> /
                 {% endif %}
                 {% if post.paper %}
                 <span class="tag"><a href="{{ post.paper }}">Paper</a></span>
@@ -146,18 +168,6 @@
           {% endfor %}
           {% endfor %}
           {% endfor %}
-
-          <!-- <table>
-            {% for post in site.posts %}
-            <tr>
-              <th scope="row">{{ post.date | date: "%b %-d, %Y" }}</th>
-              <td>
-                <a>{{ post.title }}</a>
-              </td>
-            </tr>
-            {% endfor %}
-          </table> -->
-
         </div>
 
       </div> <!-- content -->
