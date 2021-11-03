@@ -131,7 +131,10 @@
                   {% for author in post.authors %}
                     {% if forloop.first %}
                       {% if author == post.author %}
-                        <span class="author jw">{{ author }}</span>,
+                        <span class="author jw">{{ author }}</span>
+                        {% if author_count != 2%}
+                        ,
+                        {% endif %}
                       {% else %}
                         <span class="author">{{ author }}</span>,
                       {% endif %}
