@@ -126,20 +126,17 @@
                 {% if author_count == 0 %}
 
                 {% elsif author_count == 1 %}
-                <span class="author jw">{{ post.authors | first }}<span>
+                  <span class="author jw">{{ post.authors | first }}<span>
                 {% else %}
                   {% for author in post.authors %}
                     {% if forloop.first %}
                       {% if author == post.author %}
-                        <span class="author jw">{{ author }}</span>
-                        {% if author_count != 2%}
-                        ,
-                        {% endif %}
+                        <span class="author jw">{{ author }}</span>,
                       {% else %}
                         <span class="author">{{ author }}</span>,
                       {% endif %}
                     {% elsif forloop.last %}
-                      and
+                      <!-- and -->
                       {% if author == post.author %}
                         <span class="author jw">{{ author }}</span>
                       {% else %}
@@ -147,9 +144,9 @@
                       {% endif %}
                     {% else %}
                       {% if author == post.author %}
-                      <span class="author jw">{{ author }}</span>,
+                        <span class="author jw">{{ author }}</span>,
                       {% else %}
-                      <span class="author">{{ author }}</span>,
+                        <span class="author">{{ author }}</span>,
                       {% endif %}
                     {% endif %}
                   {% endfor %}
