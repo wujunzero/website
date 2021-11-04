@@ -5,7 +5,7 @@ date: 2018-02-13 00:00:00 +00:00
 # image: ""
 categories: research
 author: Jun Wu
-authors: [Ruizhi Li, Xiaoli Wu, Huan Liu, Jun Wu, Minghao Yin]
+authors: [Ruizhi Li, Xiaoli Wu, Huan Liu, Jun Wu, Minghao Yin*]
 venue: IEEE Access
 # arxiv: https://arxiv.org/abs/1904.12573
 # slides: /pdfs/jcdl2019.pdf
