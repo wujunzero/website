@@ -5,7 +5,7 @@ date: 2020-04-01 00:00:00 +00:00
 # image: ""
 categories: research
 author: Jun Wu
-authors: [Jun Wu, Chu-Min Li, Lu Jiang, Junping Zhou, Minghao Yin*]
+authors: [Jun Wu, Chu-Min Li, Lu Jiang, Junping Zhou*, Minghao Yin*]
 venue: Computers & Operations Research
 # arxiv: https://arxiv.org/abs/1904.12573
 # slides: /pdfs/jcdl2019.pdf
