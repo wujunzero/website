@@ -126,31 +126,31 @@
                 {% if author_count == 0 %}
 
                 {% elsif author_count == 1 %}
-                  <span class="author jw">{{ post.authors | first }}<span>
-                {% else %}
-                  {% for author in post.authors %}
-                    {% if forloop.first %}
-                      {% if author == post.author %}
-                        <span class="author jw">{{ author }}</span>,
-                      {% else %}
-                        <span class="author">{{ author }}</span>,
-                      {% endif %}
-                    {% elsif forloop.last %}
-                      <!-- and -->
-                      {% if author == post.author %}
-                        <span class="author jw">{{ author }}</span>
-                      {% else %}
-                        <span class="author">{{ author }}</span>
-                      {% endif %}
+                <span class="author jw">{{ post.authors | first }}<span>
                     {% else %}
-                      {% if author == post.author %}
-                        <span class="author jw">{{ author }}</span>,
-                      {% else %}
-                        <span class="author">{{ author }}</span>,
-                      {% endif %}
+                    {% for author in post.authors %}
+                    {% if forloop.first %}
+                    {% if author == post.author %}
+                    <span class="author jw">{{ author }}</span>,
+                    {% else %}
+                    <span class="author">{{ author }}</span>,
                     {% endif %}
-                  {% endfor %}
-                {% endif %}
+                    {% elsif forloop.last %}
+                    <!-- and -->
+                    {% if author == post.author %}
+                    <span class="author jw">{{ author }}</span>
+                    {% else %}
+                    <span class="author">{{ author }}</span>
+                    {% endif %}
+                    {% else %}
+                    {% if author == post.author %}
+                    <span class="author jw">{{ author }}</span>,
+                    {% else %}
+                    <span class="author">{{ author }}</span>,
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
               </div>
               <div>
                 {% if post.venue %}
