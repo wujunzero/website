@@ -11,6 +11,6 @@ venue: "Mathematical Biosciences and Engineering"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-venueurl: ""
+venueurl: "https://www.aimspress.com/article/doi/10.3934/mbe.2022148"
 paper: ""
 ---
