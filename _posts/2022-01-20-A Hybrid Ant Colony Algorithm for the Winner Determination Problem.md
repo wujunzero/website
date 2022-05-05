@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Hybrid Ant Colony Algorithm for the Winner Determination Problem"
-date: 2022-01-01 00:00:00 +00:00
+date: 2022-01-20 00:00:00 +00:00
 # image: ""
 categories: research
 author: "Jun Wu"
