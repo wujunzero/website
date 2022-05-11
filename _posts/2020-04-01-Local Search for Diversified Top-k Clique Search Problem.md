@@ -4,7 +4,7 @@ title: Local Search for Diversified Top-k Clique Search Problem
 date: 2020-04-01 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: journal
+categories: journal
 author: Jun Wu
 authors: [Jun Wu, Chu-Min Li, Lu Jiang, Junping Zhou*, Minghao Yin*]
 venue: Computers & Operations Research

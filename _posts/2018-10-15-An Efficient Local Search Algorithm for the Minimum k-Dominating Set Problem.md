@@ -4,7 +4,7 @@ title: An Efficient Local Search Algorithm for the Minimum k-Dominating Set Prob
 date: 2018-10-15 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: journal
+categories: journal
 author: Jun Wu
 authors: [Ruizhi Li, Huan Liu, Xiaoli Wu, Jun Wu, Minghao Yin*]
 venue: IEEE Access

@@ -4,7 +4,7 @@ title: "A Hybrid Ant Colony Algorithm for the Winner Determination Problem"
 date: 2022-01-20 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: journal
+categories: journal
 author: "Jun Wu"
 authors: [Jun Wu, Mingjie Fan, Yang Liu, Yupeng Zhou*, Nan Yang, Minghao Yin*]
 venue: "Mathematical Biosciences and Engineering"

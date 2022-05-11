@@ -4,7 +4,7 @@ title: "Local Search for Diversified Top-k s-plex Search Problem (Student Abstra
 date: 2021-05-18 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: conference
+categories: conference
 author: "Jun Wu"
 authors: [Jun Wu, Minghao Yin*]
 venue: "AAAI 2021"

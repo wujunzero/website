@@ -4,7 +4,7 @@ title: "A Restart Local Search for Solving Diversified Top-$k$ Weight Clique Sea
 date: 2021-10-21 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: journal
+categories: journal
 author: "Jun Wu"
 authors: [Jun Wu, Minghao Yin*]
 venue: "Mathematics"

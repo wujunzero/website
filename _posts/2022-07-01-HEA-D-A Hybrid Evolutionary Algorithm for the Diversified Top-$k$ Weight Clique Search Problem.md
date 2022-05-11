@@ -4,7 +4,7 @@ title: "HEA-D: A Hybrid Evolutionary Algorithm for the Diversified Top-$k$ Weigh
 date: 2022-07-01 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: conference
+categories: conference
 author: "Jun Wu"
 authors: [Jun Wu, Chu-Min Li, Yupeng Zhou, Minghao Yin*, Xin Xu, Dangdang Niu]
 venue: "IJCAI 2022"

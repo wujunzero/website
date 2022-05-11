@@ -4,7 +4,7 @@ title: An Efficient Local Search for the Maximum Edge Weighted Clique Problem
 date: 2018-02-13 00:00:00 +00:00
 # image: ""
 # categories: research
-catgories: journal
+categories: journal
 author: Jun Wu
 authors: [Ruizhi Li, Xiaoli Wu, Huan Liu, Jun Wu, Minghao Yin*]
 venue: IEEE Access

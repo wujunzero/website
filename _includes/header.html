@@ -115,7 +115,7 @@
           </div>
           {% for post in year.items %}
           {% for cat in post.categories %}
-          {% if cat == 'conference' %}
+          {% if cat == 'conference' | cat == 'journal' %}
 
           <div class="publication">
             <!-- {% if post.image %}
