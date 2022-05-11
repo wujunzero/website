@@ -121,7 +121,8 @@
             <!-- {% if post.image %}
             <div class="img"><img class="img_responsive" src="{{ post.image }}" alt=""></div>
             {% endif %} -->
-            <div class="text">
+            <div class="text">              
+              <div class="title"><a name="">{{ post.title }}</a></div>
               <div class="authors">
                 {% assign author_count = page.authors | size %}
                 {% if author_count == 0 %}
@@ -153,7 +154,6 @@
                     {% endfor %}
                     {% endif %}
               </div>
-              <div class="title"><a name="">{{ post.title }}</a></div>
               <div>
                 {% if post.venue %}
                 <span class="venue"><a href="{{ post.url }}">{{ post.venue }}</a></span> /
