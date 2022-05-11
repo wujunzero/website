@@ -3,7 +3,8 @@ layout: post
 title: "Local Search for Diversified Top-k s-plex Search Problem (Student Abstract)"
 date: 2021-05-18 00:00:00 +00:00
 # image: ""
-categories: research
+# categories: research
+catgories: conference
 author: "Jun Wu"
 authors: [Jun Wu, Minghao Yin*]
 venue: "AAAI 2021"
@@ -11,6 +12,6 @@ venue: "AAAI 2021"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-venueurl: "https://ojs.aaai.org/index.php/AAAI/article/view/17961"
+url: "https://ojs.aaai.org/index.php/AAAI/article/view/17961"
 paper: "https://ojs.aaai.org/index.php/AAAI/article/view/17961/17766"
 ---

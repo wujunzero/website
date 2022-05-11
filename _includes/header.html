@@ -115,14 +115,13 @@
           </div>
           {% for post in year.items %}
           {% for cat in post.categories %}
-          {% if cat == 'research' %}
+          {% if cat == 'conference' | cat == 'journal' %}
 
           <div class="publication">
-            {% if post.image %}
+            <!-- {% if post.image %}
             <div class="img"><img class="img_responsive" src="{{ post.image }}" alt=""></div>
-            {% endif %}
+            {% endif %} -->
             <div class="text">
-              <div class="title"><a name="">{{ post.title }}</a></div>
               <div class="authors">
                 {% assign author_count = page.authors | size %}
                 {% if author_count == 0 %}
@@ -154,9 +153,10 @@
                     {% endfor %}
                     {% endif %}
               </div>
+              <div class="title"><a name="">{{ post.title }}</a></div>
               <div>
                 {% if post.venue %}
-                <span class="venue"><a href="{{ post.venueurl }}">{{ post.venue }}</a></span> /
+                <span class="venue"><a href="{{ post.url }}">{{ post.venue }}</a></span> /
                 <!-- <span>{{ post.date | date: "%Y" }}</span> / -->
                 {% endif %}
                 {% if post.paper %}
