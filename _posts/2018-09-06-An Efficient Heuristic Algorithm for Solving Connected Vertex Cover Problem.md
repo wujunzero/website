@@ -3,8 +3,8 @@ layout: post
 title: An Efficient Heuristic Algorithm for Solving Connected Vertex Cover Problem
 date: 2018-09-06 00:00:00 +00:00
 # image: ""
-# categories: research
-categories: journal
+categories: research
+type: journal
 author: Jun Wu
 authors: [Yongfei Zhang, Jun Wu, Liming Zhang, Peng Zhao, Junping Zhou*, Minghao Yin]
 venue: Mathematical Problems in Engineering

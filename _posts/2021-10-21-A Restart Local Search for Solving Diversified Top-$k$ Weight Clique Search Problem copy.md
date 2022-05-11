@@ -3,8 +3,8 @@ layout: post
 title: "A Restart Local Search for Solving Diversified Top-$k$ Weight Clique Search Problem"
 date: 2021-10-21 00:00:00 +00:00
 # image: ""
-# categories: research
-categories: journal
+categories: research
+type: journal
 author: "Jun Wu"
 authors: [Jun Wu, Minghao Yin*]
 venue: "Mathematics"
