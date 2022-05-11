@@ -12,6 +12,6 @@ venue: Computers & Operations Research
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-url: "https://www.sciencedirect.com/science/article/pii/S0305054819303090"
+venue_url: "https://www.sciencedirect.com/science/article/pii/S0305054819303090"
 paper: "https://www.sciencedirect.com/science/article/pii/S0305054819303090/pdfft?md5=4ac5a8cbe9dfd864131cee78a8ebfecf&pid=1-s2.0-S0305054819303090-main.pdf"
 ---

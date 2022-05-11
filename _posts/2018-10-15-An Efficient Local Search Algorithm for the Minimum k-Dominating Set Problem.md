@@ -12,6 +12,6 @@ venue: IEEE Access
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-url: "https://ieeexplore.ieee.org/document/8492522"
+venue_url: "https://ieeexplore.ieee.org/document/8492522"
 paper: "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8492522"
 ---

@@ -12,6 +12,6 @@ venue: Mathematical Problems in Engineering
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-url: "https://www.hindawi.com/journals/mpe/2018/3935804/"
+venue_url: "https://www.hindawi.com/journals/mpe/2018/3935804/"
 paper: "https://downloads.hindawi.com/journals/mpe/2018/3935804.pdf"
 ---

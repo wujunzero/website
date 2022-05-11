@@ -12,6 +12,6 @@ venue: "Mathematics"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-url: "https://www.mdpi.com/2227-7390/9/21/2674"
+venue_url: "https://www.mdpi.com/2227-7390/9/21/2674"
 paper: "https://www.mdpi.com/2227-7390/9/21/2674/pdf"
 ---

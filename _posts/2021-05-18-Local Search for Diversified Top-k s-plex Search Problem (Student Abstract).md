@@ -12,6 +12,6 @@ venue: "AAAI 2021"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-url: "https://ojs.aaai.org/index.php/AAAI/article/view/17961"
+venue_url: "https://ojs.aaai.org/index.php/AAAI/article/view/17961"
 paper: "https://ojs.aaai.org/index.php/AAAI/article/view/17961/17766"
 ---
