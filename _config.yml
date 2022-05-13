@@ -62,17 +62,17 @@ permalink: /
 #   - jekyll-feed
 
 # kramdown:
-  # Use GitHub flavored markdown, including triple backtick fenced code blocks
-  # input: GFM
-  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
-  # syntax_highlighter: rouge
-  # syntax_highlighter_opts:
-    # Use existing pygments syntax highlighting css
-    # css_class: 'highlight'
+#   Use GitHub flavored markdown, including triple backtick fenced code blocks
+#   input: GFM
+#   Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
+#   syntax_highlighter: rouge
+#   syntax_highlighter_opts:
+#     Use existing pygments syntax highlighting css
+#     css_class: 'highlight'
 
 # Set the Sass partials directory, as we're using @imports
 # sass:
-#   style: :compressed # You might prefer to minify using :compressed
+#   style: : compressed # You might prefer to minify using :compressed
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -82,14 +82,15 @@ permalink: /
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - bak

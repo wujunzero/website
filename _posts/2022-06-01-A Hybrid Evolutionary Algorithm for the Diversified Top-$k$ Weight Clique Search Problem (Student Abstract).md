@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "A Hybrid Evolutionary Algorithm for the Diversified Top-$k$ Weight Clique Search Problem (Student Abstract)"
-date: 2022-05-01 00:00:00 +00:00
+title: "A Hybrid Evolutionary Algorithm for the Diversified Top-k Weight Clique Search Problem (Student Abstract)"
+date: 2022-06-01 00:00:00 +00:00
 # image: ""
 categories: research
 type: conference
