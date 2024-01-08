@@ -53,6 +53,7 @@ span.highlight a:visited{color:#BB2222}
 span.fullvenue{padding-left:8px}
 div.anchor{border-top:50px solid transparent;margin-top:-50px}
 div.recruit{display:none}
+
 @media only screen and (max-width: 599px) {
     div.ftsubheader{padding-left:10px;padding-right:10px}
     div.heading div.img{padding-right:80px}
@@ -65,5 +66,5 @@ div.recruit{display:none}
     div.heading div.img{padding-right:calc(35px)}
     div.heading div.info{padding-right:calc(40% - 350px)}
     div.publication div.img{width:23%}
-    div.publication div.text{max-width:70%;text-align:left}
+    div.publication div.text{max-width:80%;text-align:left}
 }

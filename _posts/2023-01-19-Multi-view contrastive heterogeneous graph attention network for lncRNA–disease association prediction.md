@@ -11,6 +11,6 @@ venue: "Briefings in Bioinformatics"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-venueurl: "https://academic.oup.com/bib/article-abstract/24/1/bbac548/6931723"
-# paper: ""
+venue_url: "https://academic.oup.com/bib/article-abstract/24/1/bbac548/6931723"
+paper: "https://academic.oup.com/bib/article-pdf/24/1/bbac548/48783220/bbac548.pdf"
 ---

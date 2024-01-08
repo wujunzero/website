@@ -10,8 +10,8 @@ authors: [Jun Wu, Chu-Min Li, Yupeng Zhou, Minghao Yin*, Xin Xu, Dangdang Niu]
 venue: "IJCAI 2022"
 # arxiv: https://arxiv.org/abs/1904.12573
 # slides: /pdfs/jcdl2019.pdf
-# code: https://github.com/wujunzero/HEA-D
+code: https://github.com/wujunzero/HEA-D
 # url: 
-# venue_url:
+venue_url: "https://www.ijcai.org/proceedings/2022/668"
 paper: "https://www.ijcai.org/proceedings/2022/0668.pdf"
 ---

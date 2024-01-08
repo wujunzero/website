@@ -11,6 +11,6 @@ venue: "Applied Intelligence"
 # slides: /pdfs/jcdl2019.pdf
 # code: https://github.com/leonidk/venue_scores
 # url: 
-venueurl: "https://link.springer.com/article/10.1007/s10489-022-03993-4"
-# paper: ""
+venue_url: "https://link.springer.com/article/10.1007/s10489-022-03993-4"
+paper: "https://link.springer.com/content/pdf/10.1007/s10489-022-03993-4.pdf"
 ---
