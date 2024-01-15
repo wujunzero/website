@@ -53,13 +53,16 @@ footer-links:
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
-#permalink: /:title/
-permalink: /
+permalink: /:title/
+# permalink: /
 
 # Build settings
 # theme: minima
-# plugins:
-#   - jekyll-feed
+plugins:
+  # - jekyll-feed
+  - jekyll-latex
+
+# markdown: kramdown
 
 # kramdown:
 #   Use GitHub flavored markdown, including triple backtick fenced code blocks
@@ -94,3 +97,6 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - bak
+  - assets
+  - fonts
+  - _bibliography
