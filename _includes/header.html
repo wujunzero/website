@@ -5,12 +5,12 @@
     <script src="js/header.js"></script>
     <script src="scripts/fetch_google_scholar_stats.html"></script>
 
-    {% if site.google_scholar_stats_use_cdn %}
-    {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
-    {% else %}
+    <!-- {% if site.google_scholar_stats_use_cdn %} -->
+    <!-- {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %} -->
+    <!-- {% else %} -->
     {% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-    {% endif %}
-    {% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
+    <!-- {% endif %} -->
+    {% assign url = gsDataBaseUrl | append: "wujunzero/website/google-scholar-stats/gs_data_shieldsio.json" %}
 
 
     <header>
