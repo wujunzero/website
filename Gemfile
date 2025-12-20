@@ -7,7 +7,7 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-# gem "jekyll", ">= 4.2.1"
+# gem "jekyll", '~>4.3'
 # gem 'http_parser.rb', git: "git@github.com:tmm1/http_parser.rb.git"
 # gem 'http_parser.rb', git: "https://github.com/tmm1/http_parser.rb.git"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
@@ -44,4 +44,6 @@ gem "webrick"
 # gem "webrick", "~> 1.7"
 # gem "commonmarker", ">= 0.23.7"
 # gem "activesupport", ">= 6.1.7.3"
+gem "csv"
+gem "logger"
 
