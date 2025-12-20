@@ -1,3 +1,177 @@
 ---
 layout: default
 ---
+
+{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
+{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
+
+<div class="outercontainer">
+    {% include nav.html %}
+
+    <div class="container body">
+        <!-- Home Section -->
+        <div class="content heading anchor" id="home">
+            <div class="img">
+                <img class="img_responsive" src="images/Jun_Wu.jpg" alt="Jun Wu"
+                    style="width:180px; border-radius:8px;">
+            </div>
+            <div class="text info">
+                <h1>Jun Wu</h1>
+                <p></p>
+                <div>Lecturer</div>
+                <div>School of Computer Science</div>
+                <div>Nanjing University of Information Science & Technology, Nanjing, China</div>
+                <div>Email:&nbsp;wujunzero@gmail.com; wujun@nuist.edu.cn</div>
+                <p>
+                    <span>
+                        <div itemscope itemtype="https://schema.org/Person">
+                            <a itemprop="sameAs" content="https://orcid.org/0000-0002-5239-5126"
+                                href="https://orcid.org/0000-0002-5239-5126" target="orcid.widget"
+                                rel="me noopener noreferrer" style="vertical-align:top;">
+                                <img src="images/orcid.webp" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
+                                https://orcid.org/0000-0002-5239-5126
+                            </a>
+                        </div>
+                    </span>
+                </p>
+                <p>
+                    <span>
+                        <a href="https://scholar.google.com/citations?user=xhn6R7EAAAAJ">Google Scholar
+                            <img
+                                src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations">
+                        </a>
+                        /
+                        <span><a href="https://dblp.org/pid/20/3894-20.html">DBLP</a></span>
+                        /
+                        <span><a href="https://github.com/wujunzero">Github</a></span>
+                        /
+                        <span><a href="https://www.semanticscholar.org/author/2146669050">Semantic Scholar</a></span>
+                    </span>
+                </p>
+            </div>
+            <div class="text">
+                <p>I have broad interest in artificial intelligence and its applications.
+                    My research is concerned with the practical resolution of NP-hard problems,
+                    including Boolean Satisfiability Problem(SAT),
+                    Maximum Satisfiability Problem (MaxSAT),
+                    Minimum Vertex Cover Problem (MVC),
+                    Maximum Clique Problem (MC) and
+                    Graph Coloring Problem (GC).
+                    I am particularly interested in the combinatorial problem with the heuristic algorithm and exact
+                    algorithm.
+                </p>
+            </div>
+        </div>
+
+        <!-- Educations Section -->
+        <div class="content anchor" id="educations">
+            <div class="text" style="z-index:1;position:relative">
+                <h3 style="margin-bottom:.5em">Educations</h3>
+                <ul style="padding-bottom:1em">
+                    <li>September 2010 - July 2014: B.Sc in computer science and technology, Jilin University, China
+                    </li>
+                    <li>September 2015 - July 2017: M.Sc in computer science and technology, Northeast Normal
+                        University, China</li>
+                    <li>October 2018 - October 2019: Visiting Ph.D. in University of Picardie Jules Verne, France</li>
+                    <li>September 2017 - January 2023: Ph.D in information science and technology, Northeast Normal
+                        University, China</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Teaching Section -->
+        <div class="content anchor" id="teaching">
+            <div class="text" style="z-index:1;position:relative">
+                <h3 style="margin-bottom:.5em">Teaching</h3>
+                <ul style="padding-bottom:1em">
+                    <li>Algorithm Design and Analysis, Spring 2025</li>
+                    <li>Algorithm Design and Analysis, Spring 2024</li>
+                    <li>Discrete Mathematics, Spring 2024</li>
+                    <li>Block Chain, Fall 2023</li>
+                    <li>Randomized Algorithm. Fall 2023</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="content anchor" id="projects">
+            <div class="text" style="z-index:1;position:relative">
+                <h3 style="margin-bottom:.5em">Projects</h3>
+                <ul style="padding-bottom:1em">
+                    <li>Supported by NSFC under Grant No. 62306149 (2024 - 2026).</li>
+                    <li>Supported by the Startup Foundation for Introducing Talent of NUIST (2023 - 2025).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Publications Section -->
+        <div class="content anchor" id="publications">
+            <div class="text" style="z-index:1;position:relative">
+                <h3 style="margin-bottom:0em">Publications</h3>
+            </div>
+            <br><br>
+            <div id="pubs">
+                {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+                {% for year in posts_by_year %}
+                <div class="text anchor">
+                    <h4>{{ year.name }}</h4>
+                </div>
+                {% for post in year.items %}
+                {% for cat in post.categories %}
+                {% if cat == 'research' %}
+                <div class="publication">
+                    <div class="text">
+                        <div class="title"><a name="">{{ post.title }}</a></div>
+                        <div class="authors">
+                            {% assign author_count = page.authors | size %}
+                            {% if author_count == 0 %}
+                            {% elsif author_count == 1 %}
+                            <span class="author jw">{{ post.authors | first }}</span>
+                            {% else %}
+                            {% for author in post.authors %}
+                            {% if forloop.first %}
+                            {% if author == post.author %}
+                            <span class="author jw">{{ author }}</span>,
+                            {% else %}
+                            <span class="author">{{ author }}</span>,
+                            {% endif %}
+                            {% elsif forloop.last %}
+                            {% if author == post.author %}
+                            <span class="author jw">{{ author }}</span>
+                            {% else %}
+                            <span class="author">{{ author }}</span>
+                            {% endif %}
+                            {% else %}
+                            {% if author == post.author %}
+                            <span class="author jw">{{ author }}</span>,
+                            {% else %}
+                            <span class="author">{{ author }}</span>,
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div>
+                            {% if post.venue %}
+                            <span class="venue tag"><a href="{{ post.venue_url }}">{{ post.venue }}</a></span>
+                            {% endif %}
+                            {% if post.paper %}
+                            / <span class="venue tag"><a href="{{ post.paper }}">Paper</a></span>
+                            {% endif %}
+                            {% if post.code %}
+                            / <span class="venue tag"><a href="{{ post.code }}">Code</a></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>var scroll = new SmoothScroll('a[href*="#"]', { speed: 1000 });</script>
