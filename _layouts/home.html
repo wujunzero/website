@@ -121,51 +121,46 @@ layout: default
                 {% if cat == 'research' %}
                 <div class="publication">
                     <div class="text">
-                        <div class="title"><a href="{{ post.paper | default: '#' }}">{{ post.title }}</a></div>
+                        <div class="title"><a name="">{{ post.title }}</a></div>
                         <div class="authors">
                             {% assign author_count = page.authors | size %}
                             {% if author_count == 0 %}
                             {% elsif author_count == 1 %}
-                            <span class="jw">{{ post.authors | first }}</span>
+                            <span class="author jw">{{ post.authors | first }}</span>
                             {% else %}
                             {% for author in post.authors %}
                             {% if forloop.first %}
                             {% if author == post.author %}
-                            <span class="jw">{{ author }}</span>,
+                            <span class="author jw">{{ author }}</span>,
                             {% else %}
-                            <span>{{ author }}</span>,
+                            <span class="author">{{ author }}</span>,
                             {% endif %}
                             {% elsif forloop.last %}
                             {% if author == post.author %}
-                            <span class="jw">{{ author }}</span>
+                            <span class="author jw">{{ author }}</span>
                             {% else %}
-                            <span>{{ author }}</span>
+                            <span class="author">{{ author }}</span>
                             {% endif %}
                             {% else %}
                             {% if author == post.author %}
-                            <span class="jw">{{ author }}</span>,
+                            <span class="author jw">{{ author }}</span>,
                             {% else %}
-                            <span>{{ author }}</span>,
+                            <span class="author">{{ author }}</span>,
                             {% endif %}
                             {% endif %}
                             {% endfor %}
                             {% endif %}
                         </div>
-                        <div class="venue-line">
+                        <div>
                             {% if post.venue %}
-                            <span class="venue tag">In <i>{{ post.venue }}</i></span>
+                            <span class="venue tag"><a href="{{ post.venue_url }}">{{ post.venue }}</a></span>
                             {% endif %}
-                            <span class="links">
-                                {% if post.paper %}
-                                <a href="{{ post.paper }}" target="_blank">PDF</a>
-                                {% endif %}
-                                {% if post.code %}
-                                <a href="{{ post.code }}" target="_blank">Code</a>
-                                {% endif %}
-                                {% if post.venue_url %}
-                                <a href="{{ post.venue_url }}" target="_blank">Link</a>
-                                {% endif %}
-                            </span>
+                            {% if post.paper %}
+                            / <span class="venue tag"><a href="{{ post.paper }}">Paper</a></span>
+                            {% endif %}
+                            {% if post.code %}
+                            / <span class="venue tag"><a href="{{ post.code }}">Code</a></span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
