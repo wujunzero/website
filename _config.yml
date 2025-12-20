@@ -63,6 +63,7 @@ permalink: /:title/
 plugins:
   # - jekyll-feed
   - jekyll-latex
+  - jekyll-sitemap
 
 # markdown: kramdown
 
