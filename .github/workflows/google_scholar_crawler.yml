@@ -1,8 +1,12 @@
 name: Get Citation Data
 
 on:
+  # Daily refresh + manual runs only. The `page_build` trigger was removed:
+  # it fired a full ~20-30 min scholarly crawl on every deploy, and with
+  # cancel-in-progress disabled those runs queued up behind each other.
+  # The citation badge is fetched live from the google-scholar-stats branch,
+  # so it does not need refreshing on every build.
   workflow_dispatch:
-  page_build:
   schedule:
     - cron: '0 8 * * *'
 
