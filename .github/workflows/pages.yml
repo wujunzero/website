@@ -4,7 +4,7 @@ name: Build and deploy Jekyll site to Pages
 # GitHub Pages builder, which ignored it and used its bundled gems).
 on:
   push:
-    branches: [main, ci/actions-pages]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
