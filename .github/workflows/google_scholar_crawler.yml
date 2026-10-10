@@ -20,6 +20,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Generous: scholarly retries with backoff, then the Semantic Scholar
+    # fallback runs. Both are bounded, so this is a safety net only.
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -27,18 +29,42 @@ jobs:
       - name: Install Reqs
         run: |
           sudo apt-get install -y python3-setuptools
-
-      - name: Run
-        run: |
           cd ./google_scholar_crawler
           python3 -m pip install -r requirements.txt
-          python3 main.py
-          cd ./results
+
+      # Exits non-zero if *both* sources fail. The publish step below is then
+      # skipped, so the last good data stays on the branch instead of being
+      # replaced by an empty or zeroed value.
+      - name: Fetch citation data
+        working-directory: ./google_scholar_crawler
+        run: python3 main.py
+        env:
+          GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+          SEMANTIC_SCHOLAR_AUTHOR_ID: ${{ secrets.SEMANTIC_SCHOLAR_AUTHOR_ID }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+
+      - name: Publish to the google-scholar-stats branch
+        working-directory: ./google_scholar_crawler/results
+        run: |
           git init
           git config --local user.name "${GITHUB_ACTOR}"
           export remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
           git add *.json
           git diff --cached --quiet || git commit -m "Updated Citation Data"
           git push "${remote_repo}" HEAD:google-scholar-stats --force
-        env:
-          GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Citation data"
+            echo
+            if [ -f google_scholar_crawler/results/gs_data_shieldsio.json ]; then
+              echo '```json'
+              cat google_scholar_crawler/results/gs_data_shieldsio.json
+              echo
+              echo '```'
+            else
+              echo "**No data written** — every source failed. The published data is unchanged."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
