@@ -12,8 +12,13 @@ layout: default
         <!-- Home Section -->
         <div class="content heading anchor" id="home">
             <div class="img">
-                <img class="img_responsive" src="{{ '/images/Jun_Wu.jpg' | relative_url }}" alt="Jun Wu"
-                    style="width:180px; border-radius:8px;">
+                <!-- WebP first (≈3x smaller); JPEG fallback for older browsers.
+                     width/height let the browser reserve the box and avoid layout shift. -->
+                <picture>
+                    <source srcset="{{ '/images/Jun_Wu.webp' | relative_url }}" type="image/webp">
+                    <img class="img_responsive" src="{{ '/images/Jun_Wu.jpg' | relative_url }}" alt="Jun Wu"
+                        width="180" height="256" style="width:180px; height:auto; border-radius:8px;">
+                </picture>
             </div>
             <div class="text info">
                 <h1>Jun Wu</h1>
@@ -66,7 +71,7 @@ layout: default
         <!-- Educations Section -->
         <div class="content anchor" id="educations">
             <div class="text" style="z-index:1;position:relative">
-                <h3 style="margin-bottom:.5em">Educations</h3>
+                <h2 style="margin-bottom:.5em">Educations</h2>
                 <ul style="padding-bottom:1em">
                     <li>September 2010 - July 2014: B.Sc in computer science and technology, Jilin University, China
                     </li>
@@ -82,7 +87,7 @@ layout: default
         <!-- Teaching Section -->
         <div class="content anchor" id="teaching">
             <div class="text" style="z-index:1;position:relative">
-                <h3 style="margin-bottom:.5em">Teaching</h3>
+                <h2 style="margin-bottom:.5em">Teaching</h2>
                 <ul style="padding-bottom:1em">
                     <li>Algorithm Design and Analysis, Spring 2025</li>
                     <li>Algorithm Design and Analysis, Spring 2024</li>
@@ -96,7 +101,7 @@ layout: default
         <!-- Projects Section -->
         <div class="content anchor" id="projects">
             <div class="text" style="z-index:1;position:relative">
-                <h3 style="margin-bottom:.5em">Projects</h3>
+                <h2 style="margin-bottom:.5em">Projects</h2>
                 <ul style="padding-bottom:1em">
                     <li>Supported by NSFC under Grant No. 62306149 (2024 - 2026).</li>
                     <li>Supported by the Startup Foundation for Introducing Talent of NUIST (2023 - 2025).</li>
@@ -107,14 +112,14 @@ layout: default
         <!-- Publications Section -->
         <div class="content anchor" id="publications">
             <div class="text" style="z-index:1;position:relative">
-                <h3 style="margin-bottom:0em">Publications</h3>
+                <h2 style="margin-bottom:0em">Publications</h2>
             </div>
             <br><br>
             <div id="pubs">
                 {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
                 {% for year in posts_by_year %}
                 <div class="text anchor">
-                    <h4>{{ year.name }}</h4>
+                    <h3>{{ year.name }}</h3>
                 </div>
                 {% for post in year.items %}
                 {% for cat in post.categories %}

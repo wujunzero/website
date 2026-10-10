@@ -8,7 +8,8 @@ source "https://rubygems.org"
 # GitHub Actions now, so the repo's Gemfile.lock is authoritative.
 gem "jekyll", "~> 4.4"
 
-# Plugin enabled in _config.yml.
+# Plugins enabled in _config.yml.
+gem "jekyll-feed"
 gem "jekyll-sitemap"
 
 # No longer bundled with Ruby 3.4+; Jekyll (and `jekyll serve`) need them.
