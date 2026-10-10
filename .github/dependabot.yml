@@ -1,0 +1,35 @@
+version: 2
+updates:
+  # The workflows pin actions to commit SHAs (supply-chain hardening).
+  # This keeps those pins current — without it they would silently go stale.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: "CI"
+
+  # Gemfile.lock now governs the deploy (the site is built by GitHub Actions),
+  # so gem updates here take effect on the published site.
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: weekly
+    groups:
+      gems:
+        patterns: ["*"]
+    commit-message:
+      prefix: "deps"
+
+  # The citation crawler's Python dependencies.
+  # NOTE: requirements.txt pins `bibtexparser<2` on purpose — scholarly 1.5.1
+  # imports the bibtexparser v1 API. Dependabot respects that constraint.
+  - package-ecosystem: pip
+    directory: "/google_scholar_crawler"
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "deps"
