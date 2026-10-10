@@ -2,4 +2,4 @@ scholarly==1.5.1
 # scholarly 1.5.1 imports `bibtexparser.bibdatabase` (bibtexparser v1 API).
 # bibtexparser 2.x removed that module -> ModuleNotFoundError on import.
 # Keep this pinned below 2.0 until scholarly supports the v2 API.
-bibtexparser<2
+bibtexparser<3
