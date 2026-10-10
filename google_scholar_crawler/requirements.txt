@@ -2,4 +2,8 @@ scholarly==1.5.1
 # scholarly 1.5.1 imports `bibtexparser.bibdatabase` (bibtexparser v1 API).
 # bibtexparser 2.x removed that module -> ModuleNotFoundError on import.
 # Keep this pinned below 2.0 until scholarly supports the v2 API.
+# (Verified against the sdists: 1.7.11 still uses the v1 API too.)
 bibtexparser<2
+
+# The Semantic Scholar fallback (semantic_scholar.py) uses only the standard
+# library, so it still works if the scholarly install above is broken.
