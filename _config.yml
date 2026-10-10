@@ -22,10 +22,11 @@ title: Jun Wu
 name: Jun Wu
 repository: wujunzero/website
 email: wujunzero@gmail.com
-description: >- # site description, used in document head meta / feed output
-  Jun Wu is a Lecturer at the School of Computer Science, NUIST, working on
-  artificial intelligence and combinatorial optimization (SAT, MaxSAT,
-  maximum clique, vertex cover).
+# Single source of truth for the site description. Consumed by
+# <meta name="description">, og:description, twitter:description and the feed.
+description: >-
+  Jun Wu is a Lecturer at the School of Computer Science, Nanjing University of
+  Information Science & Technology, working on combinatorial optimization.
 # This is a GitHub Pages *project* site, served from /website/.
 # baseurl must hold the subpath so `relative_url` / `absolute_url` resolve
 # correctly on nested pages; `url` must NOT repeat it.
@@ -48,10 +49,15 @@ permalink: /:title/
 # Build settings
 # theme: minima
 plugins:
-  # - jekyll-feed
   # jekyll-latex removed: it was never in the Gemfile (the legacy GitHub Pages
   # builder silently ignored it) and nothing on the site uses LaTeX.
+  - jekyll-feed
   - jekyll-sitemap
+
+# jekyll-feed only emits the 10 most recent posts by default. The site has 12
+# publications and no other dated content, so publish the complete list.
+feed:
+  posts_limit: 30
 
 # markdown: kramdown
 

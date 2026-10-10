@@ -46,10 +46,18 @@ span.highlight {
     font-weight: 600;
 }
 
+h3,
 h4,
 div.title,
 div.ftsubheader {
     font-size: 100%;
+}
+
+/* The homepage section headings were <h3> and are now <h2> (the outline
+   previously skipped a level: h1 -> h3 -> h4). Pin h2 to the size h3 used to
+   render at (its UA default of 1.17em) so nothing changes visually. */
+h2 {
+    font-size: 117%;
 }
 
 ul,
