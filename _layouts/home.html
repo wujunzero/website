@@ -41,9 +41,14 @@ layout: default
                 </p>
                 <p>
                     <span>
+                        {%- comment -%}
+                          No `&label=` on this URL: it would override the label in the
+                          JSON, which the crawler switches to "citations (S2)" when the
+                          number comes from the Semantic Scholar fallback.
+                        {%- endcomment -%}
                         <a href="https://scholar.google.com/citations?user=xhn6R7EAAAAJ">Google Scholar
                             <img style="display:inline-block;"
-                                src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations">
+                                src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat">
                         </a>
                         /
                         <span><a href="https://dblp.org/pid/20/3894-20.html">DBLP</a></span>
