@@ -26,8 +26,11 @@ description: >- # site description, used in document head meta / feed output
   Jun Wu is a Lecturer at the School of Computer Science, NUIST, working on
   artificial intelligence and combinatorial optimization (SAT, MaxSAT,
   maximum clique, vertex cover).
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://wujunzero.github.io/website" # the base hostname & protocol for your site, e.g. http://example.com
+# This is a GitHub Pages *project* site, served from /website/.
+# baseurl must hold the subpath so `relative_url` / `absolute_url` resolve
+# correctly on nested pages; `url` must NOT repeat it.
+baseurl: "/website" # the subpath of your site, e.g. /blog
+url: "https://wujunzero.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: wujunzero
 github_username: wujunzero
 
