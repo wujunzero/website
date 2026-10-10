@@ -5,3 +5,6 @@ _site
 vendor
 .bundle
 .DS_Store
+
+# WorkBuddy AI project data (memory, skills, etc.)
+.workbuddy-ai/
