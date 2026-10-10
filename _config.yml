@@ -54,6 +54,11 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
+# jekyll-feed only emits the 10 most recent posts by default. The site has 12
+# publications and no other dated content, so publish the complete list.
+feed:
+  posts_limit: 30
+
 # markdown: kramdown
 
 # kramdown:
