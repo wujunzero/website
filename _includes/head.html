@@ -5,7 +5,19 @@
 <meta name="author" content="{{ site.name }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{ site.name }}</title>
+{%- comment -%}
+  Every page used to share one <title> ("Jun Wu"), which is bad for search
+  results. Build a page-specific heading and reuse it for the title and the
+  social cards.
+{%- endcomment -%}
+{%- if page.layout == 'home' -%}
+  {%- assign page_heading = site.name | append: ' - Academic Homepage' -%}
+{%- elsif page.title -%}
+  {%- assign page_heading = page.title | append: ' | ' | append: site.name -%}
+{%- else -%}
+  {%- assign page_heading = site.name -%}
+{%- endif -%}
+<title>{{ page_heading }}</title>
 
 <link rel="shortcut icon" href="{{ '/images/favicon.ico' | relative_url }}">
 <meta name="description" content="{{ site.description }}">
@@ -16,13 +28,13 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}">
-<meta property="og:title" content="{{ site.name }} - Academic Homepage">
+<meta property="og:title" content="{{ page_heading }}">
 <meta property="og:description" content="{{ site.description }}">
 <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/Jun_Wu.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ site.name }} - Academic Homepage">
+<meta name="twitter:title" content="{{ page_heading }}">
 <meta name="twitter:description" content="{{ site.description }}">
 
 <!-- Canonical URL -->

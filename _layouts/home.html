@@ -128,7 +128,7 @@ layout: default
                     <div class="text">
                         <div class="title"><a name="">{{ post.title }}</a></div>
                         <div class="authors">
-                            {% assign author_count = page.authors | size %}
+                            {% assign author_count = post.authors | size %}
                             {% if author_count == 0 %}
                             {% elsif author_count == 1 %}
                             <span class="author jw">{{ post.authors | first }}</span>
