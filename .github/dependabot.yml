@@ -25,11 +25,21 @@ updates:
       prefix: "deps"
 
   # The citation crawler's Python dependencies.
-  # NOTE: requirements.txt pins `bibtexparser<2` on purpose — scholarly 1.5.1
-  # imports the bibtexparser v1 API. Dependabot respects that constraint.
   - package-ecosystem: pip
     directory: "/google_scholar_crawler"
     schedule:
       interval: monthly
+    ignore:
+      # `bibtexparser<2` is deliberate, not an oversight.
+      # Verified against the published sdists: scholarly 1.5.1 AND 1.7.11 both
+      # import the bibtexparser *v1* API —
+      #   from bibtexparser.bibdatabase import BibDatabase
+      #   bibtexparser.bparser.BibTexParser(...)
+      # bibtexparser 2.x removed both modules. Relaxing the pin to `<3` (which
+      # Dependabot proposed as PR #14) reintroduces the ModuleNotFoundError that
+      # broke the crawler for weeks. Never accept a major bump here until
+      # scholarly migrates to the v2 API.
+      - dependency-name: bibtexparser
+        update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "deps"
