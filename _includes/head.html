@@ -5,15 +5,15 @@
 <meta name="author" content="{{ site.name }}" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript" async="" src="js/inpage_linkid.js" id="undefined"></script>
-<script type="text/javascript" async="" src="js/ga.js"></script>
-<script src="js/head.js"></script>
-<script src="js/main.js"></script>
-<script src="js/scroll.js"></script>
+<script type="text/javascript" async="" src="{{ '/js/inpage_linkid.js' | relative_url }}" id="undefined"></script>
+<script type="text/javascript" async="" src="{{ '/js/ga.js' | relative_url }}"></script>
+<script src="{{ '/js/head.js' | relative_url }}"></script>
+<script src="{{ '/js/main.js' | relative_url }}"></script>
+<script src="{{ '/js/scroll.js' | relative_url }}"></script>
 
 <title>{{ site.name }}</title>
 
-<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="shortcut icon" href="{{ '/images/favicon.ico' | relative_url }}">
 <meta name="description"
   content="Jun Wu is a Lecturer at School of Computer Science, Nanjing University of Information Science & Technology.">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -22,11 +22,11 @@
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ site.url }}">
+<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}">
 <meta property="og:title" content="{{ site.name }} - Academic Homepage">
 <meta property="og:description"
   content="Lecturer at School of Computer Science, Nanjing University of Information Science & Technology. Research in combinatorial optimization and heuristic algorithms.">
-<meta property="og:image" content="{{ site.url }}/images/Jun_Wu.jpg">
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/images/Jun_Wu.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
@@ -35,7 +35,7 @@
   content="Lecturer at NUIST. Research in combinatorial optimization, SAT, MaxSAT, and graph problems.">
 
 <!-- Canonical URL -->
-<link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
 
 <!-- Schema.org structured data -->
 <script type="application/ld+json">
@@ -50,7 +50,7 @@
     "@type": "Organization",
     "name": "Nanjing University of Information Science & Technology"
   },
-  "url": "{{ site.url }}",
+  "url": "{{ site.url }}{{ site.baseurl }}",
   "email": "wujunzero@gmail.com",
   "sameAs": [
     "https://github.com/wujunzero",
@@ -60,4 +60,4 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
