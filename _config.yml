@@ -93,3 +93,7 @@ exclude:
   - assets
   - fonts
   - _bibliography
+  # The citation crawler is a build-time tool, not part of the website. Without
+  # this its source was copied into the published site
+  # (e.g. /website/google_scholar_crawler/main.py returned 200).
+  - google_scholar_crawler
