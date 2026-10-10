@@ -19,6 +19,7 @@ Environment:
     SEMANTIC_SCHOLAR_API_KEY       fallback api key (optional, recommended)
     CRAWLER_RETRIES                attempts per source (default 3)
     CRAWLER_BASE_DELAY             backoff base in seconds (default 5)
+    CRAWLER_ATTEMPT_TIMEOUT        hard limit per attempt in seconds (default 120)
 """
 
 from __future__ import annotations
@@ -26,12 +27,47 @@ from __future__ import annotations
 import json
 import os
 import random
+import signal
+import socket
 import time
+from contextlib import contextmanager
 from datetime import datetime, timezone
 
 RESULTS_DIR = "results"
 RETRIES = int(os.environ.get("CRAWLER_RETRIES", "3"))
 BASE_DELAY = float(os.environ.get("CRAWLER_BASE_DELAY", "5"))
+# Hard ceiling per attempt. scholarly opens a connection and can then block
+# forever on a stalled response — observed in production, where the run sat on
+# "attempt 1/3" until the 30-minute job timeout killed it. Without this the
+# retries and the fallback below would never get a chance to run.
+ATTEMPT_TIMEOUT = int(os.environ.get("CRAWLER_ATTEMPT_TIMEOUT", "120"))
+
+# Belt and braces: also bound individual socket operations.
+socket.setdefaulttimeout(ATTEMPT_TIMEOUT)
+
+
+class AttemptTimeout(TimeoutError):
+    """Raised when a single fetch attempt exceeds ATTEMPT_TIMEOUT."""
+
+
+@contextmanager
+def time_limit(seconds: int):
+    """Abort a blocking call after ``seconds`` (main thread, Unix only).
+
+    SIGALRM interrupts the blocking read that scholarly gets stuck on, so the
+    call raises instead of hanging until the CI job is killed.
+    """
+
+    def handler(signum, frame):  # noqa: ARG001 - signal handler signature
+        raise AttemptTimeout(f"no response within {seconds}s")
+
+    previous = signal.signal(signal.SIGALRM, handler)
+    signal.setitimer(signal.ITIMER_REAL, seconds)
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous)
 
 
 def log(message: str) -> None:
@@ -85,8 +121,9 @@ def try_source(name: str, author_id: str | None, fetch) -> tuple[dict | None, st
 
     for attempt in range(RETRIES):
         try:
-            log(f"{name}: attempt {attempt + 1}/{RETRIES}")
-            return fetch(author_id), None
+            log(f"{name}: attempt {attempt + 1}/{RETRIES} (limit {ATTEMPT_TIMEOUT}s)")
+            with time_limit(ATTEMPT_TIMEOUT):
+                return fetch(author_id), None
         except Exception as exc:  # noqa: BLE001 - report anything and fall back
             error = f"{name}: {exc!r}"
             log(f"{name}: failed - {exc!r}")
