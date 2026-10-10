@@ -62,7 +62,8 @@ permalink: /:title/
 # theme: minima
 plugins:
   # - jekyll-feed
-  - jekyll-latex
+  # jekyll-latex removed: it was never in the Gemfile (the legacy GitHub Pages
+  # builder silently ignored it) and nothing on the site uses LaTeX.
   - jekyll-sitemap
 
 # markdown: kramdown
