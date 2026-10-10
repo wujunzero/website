@@ -78,8 +78,11 @@ plugins:
 #     css_class: 'highlight'
 
 # Set the Sass partials directory, as we're using @imports
-# sass:
-#   style: : compressed # You might prefer to minify using :compressed
+# jekyll-sass-converter 3.x (Jekyll 4 / Dart Sass) no longer minifies
+# automatically in production, so ask for it explicitly.
+sass:
+  style: compressed
+  sourcemap: never
 
 # Exclude from processing.
 # The following items will not be processed, by default.
