@@ -128,33 +128,16 @@ layout: default
                     <div class="text">
                         <div class="title"><a name="">{{ post.title }}</a></div>
                         <div class="authors">
-                            {% assign author_count = post.authors | size %}
-                            {% if author_count == 0 %}
-                            {% elsif author_count == 1 %}
-                            <span class="author jw">{{ post.authors | first }}</span>
-                            {% else %}
-                            {% for author in post.authors %}
-                            {% if forloop.first %}
-                            {% if author == post.author %}
-                            <span class="author jw">{{ author }}</span>,
-                            {% else %}
-                            <span class="author">{{ author }}</span>,
-                            {% endif %}
-                            {% elsif forloop.last %}
-                            {% if author == post.author %}
-                            <span class="author jw">{{ author }}</span>
-                            {% else %}
-                            <span class="author">{{ author }}</span>
-                            {% endif %}
-                            {% else %}
-                            {% if author == post.author %}
-                            <span class="author jw">{{ author }}</span>,
-                            {% else %}
-                            <span class="author">{{ author }}</span>,
-                            {% endif %}
-                            {% endif %}
-                            {% endfor %}
-                            {% endif %}
+                            {%- comment -%}
+                              Whitespace-controlled: the previous nested if/elsif
+                              branches emitted ~5 blank lines per author, which
+                              added ~10 KB of whitespace to the homepage once the
+                              author list started rendering.
+                            {%- endcomment -%}
+                            {%- for author in post.authors -%}
+                            {%- if author == post.author -%}<span class="author jw">{{ author }}</span>{%- else -%}<span class="author">{{ author }}</span>{%- endif -%}
+                            {%- unless forloop.last %}, {% endunless -%}
+                            {%- endfor -%}
                         </div>
                         <div>
                             {% if post.venue %}
