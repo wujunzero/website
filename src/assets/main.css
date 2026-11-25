@@ -251,34 +251,12 @@ ol {
 /* 4. Hero ------------------------------------------------------------------ */
 
 .hero {
-  display: flex;
-  align-items: flex-start;
-  gap: 56px;
   padding: 80px 0 48px;
-}
-
-.hero-body {
-  flex: 1 1 auto;
-  min-width: 0;
 }
 
 .hero-identity h1 {
   font-size: 39px;
   letter-spacing: -0.01em;
-}
-
-.hero-media {
-  flex: 0 0 180px;
-}
-
-.hero-media img {
-  display: block;
-  width: 180px;
-  height: 256px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--surface);
 }
 
 .hero-role {
@@ -297,7 +275,7 @@ ol {
 .hero-statement {
   margin-top: 24px;
   font-size: 16px;
-  max-width: 60ch;
+  max-width: 68ch;
   text-wrap: pretty;
 }
 
@@ -635,25 +613,6 @@ ol {
 
 /* 13. Responsive ----------------------------------------------------------- */
 
-@media (max-width: 860px) {
-  .hero {
-    gap: 32px;
-  }
-
-  .hero-media {
-    flex-basis: 140px;
-  }
-
-  .hero-media,
-  .hero-media img {
-    width: 140px;
-  }
-
-  .hero-media img {
-    height: 200px;
-  }
-}
-
 @media (max-width: 767px) {
   .nav {
     flex-wrap: wrap;
@@ -723,48 +682,8 @@ ol {
     height: 44px;
   }
 
-  /* Photo beside the name, statement and links full width underneath. */
   .hero {
-    display: grid;
-    grid-template-columns: 84px 1fr;
-    gap: 14px 18px;
     padding: 28px 0 24px;
-  }
-
-  .hero-media {
-    grid-column: 1;
-    grid-row: 1;
-    flex: 0 0 auto;
-  }
-
-  .hero-media,
-  .hero-media img {
-    width: 84px;
-  }
-
-  .hero-media img {
-    height: 112px;
-  }
-
-  .hero-body {
-    display: contents;
-  }
-
-  .hero-identity {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .hero-statement {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    margin-top: 6px;
-  }
-
-  .identities {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    margin-top: 0;
   }
 
   .hero-identity h1 {

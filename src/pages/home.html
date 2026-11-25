@@ -21,32 +21,23 @@ eleventyComputed:
 {%- assign show_recruit = false -%}
 
 <section class="hero wrap" id="about">
-  <div class="hero-body">
-    <div class="hero-identity">
-      <h1>Jun Wu</h1>
-      <p class="hero-role">Lecturer, School of Computer Science</p>
-      <p class="hero-role">Nanjing University of Information Science &amp; Technology, Nanjing, China</p>
-      <a class="hero-email" href="mailto:wujun@nuist.edu.cn">wujun@nuist.edu.cn</a>
-    </div>
-    <p class="hero-statement">
-      I work on the practical resolution of NP-hard problems — Boolean satisfiability (SAT), MaxSAT,
-      maximum clique, vertex cover and graph coloring — with an emphasis on heuristics and exact
-      algorithms that hold up on real instances.
-    </p>
-    <div class="identities">
-      <a href="https://orcid.org/{{ site.orcid }}" rel="me noopener">ORCID</a>
-      <a href="{{ site.scholarUrl }}" rel="noopener">Google Scholar</a>
-      <a href="{{ site.dblpUrl }}" rel="noopener">DBLP</a>
-      <a href="https://github.com/{{ site.github }}" rel="me noopener">GitHub</a>
-      <a href="{{ site.semanticScholarUrl }}" rel="noopener">Semantic Scholar</a>
-    </div>
+  <div class="hero-identity">
+    <h1>Jun Wu</h1>
+    <p class="hero-role">Lecturer, School of Computer Science</p>
+    <p class="hero-role">Nanjing University of Information Science &amp; Technology, Nanjing, China</p>
+    <a class="hero-email" href="mailto:wujun@nuist.edu.cn">wujun@nuist.edu.cn</a>
   </div>
-  <div class="hero-media">
-    <picture>
-      <source srcset="{{ '/assets/Jun_Wu.webp' | url }}" type="image/webp">
-      <img src="{{ '/assets/Jun_Wu.jpg' | url }}" alt="Portrait of Jun Wu" width="180" height="256"
-        loading="eager" decoding="async">
-    </picture>
+  <p class="hero-statement">
+    I work on the practical resolution of NP-hard problems — Boolean satisfiability (SAT), MaxSAT,
+    maximum clique, vertex cover and graph coloring — with an emphasis on heuristics and exact
+    algorithms that hold up on real instances.
+  </p>
+  <div class="identities">
+    <a href="https://orcid.org/{{ site.orcid }}" rel="me noopener">ORCID</a>
+    <a href="{{ site.scholarUrl }}" rel="noopener">Google Scholar</a>
+    <a href="{{ site.dblpUrl }}" rel="noopener">DBLP</a>
+    <a href="https://github.com/{{ site.github }}" rel="me noopener">GitHub</a>
+    <a href="{{ site.semanticScholarUrl }}" rel="noopener">Semantic Scholar</a>
   </div>
 </section>
 
