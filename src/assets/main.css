@@ -150,6 +150,25 @@ ol {
   border-bottom: 1px solid var(--border);
 }
 
+/* Frosted bar over scrolling content; falls back to the solid colour above. */
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  .site-header {
+    background: rgba(255, 255, 255, 0.82);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+
+  :root[data-theme="dark"] .site-header {
+    background: rgba(15, 17, 21, 0.82);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .site-header {
+      background: rgba(15, 17, 21, 0.82);
+    }
+  }
+}
+
 .nav {
   display: flex;
   align-items: center;
