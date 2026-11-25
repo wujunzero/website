@@ -254,6 +254,30 @@ ol {
   color: var(--text);
 }
 
+/* One icon per theme mode; the button carries the current one in data-mode. */
+.theme-light,
+.theme-dark {
+  display: none;
+}
+
+[data-mode="light"] .theme-system,
+[data-mode="dark"] .theme-system {
+  display: none;
+}
+
+[data-mode="light"] .theme-light {
+  display: block;
+}
+
+[data-mode="dark"] .theme-dark {
+  display: block;
+}
+
+/* The mobile menu covers the viewport, so freeze the page behind it. */
+body.menu-open {
+  overflow: hidden;
+}
+
 .menu-btn {
   display: none;
 }
