@@ -12,15 +12,11 @@ updates:
     commit-message:
       prefix: "CI"
 
-  # Gemfile.lock now governs the deploy (the site is built by GitHub Actions),
-  # so gem updates here take effect on the published site.
-  - package-ecosystem: bundler
+  # Eleventy build dependencies.
+  - package-ecosystem: npm
     directory: "/"
     schedule:
       interval: weekly
-    groups:
-      gems:
-        patterns: ["*"]
     commit-message:
       prefix: "deps"
 
