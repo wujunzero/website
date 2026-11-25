@@ -21,6 +21,10 @@ module.exports = function (eleventyConfig) {
   // Expose site.json as `site` in Liquid templates (Jekyll-style).
   eleventyConfig.addGlobalData("site", siteData);
 
+  // News items power the homepage timeline. Kept as data (not markup) so
+  // adding an entry never means touching a template.
+  eleventyConfig.addGlobalData("news", require("./src/data/news.json"));
+
   // Jekyll-compatible slugify: lowercase, spaces→hyphens, strip non-alphanumeric.
   eleventyConfig.addFilter("slugify", (str) =>
     str
@@ -45,6 +49,21 @@ module.exports = function (eleventyConfig) {
       return 0;
     });
     return items;
+  });
+
+  // Group an already-sorted list of publications into {year, items} buckets,
+  // newest year first. Used by the homepage to render year sections.
+  eleventyConfig.addFilter("groupByYear", (items) => {
+    const groups = new Map();
+    (Array.isArray(items) ? items : []).forEach((item) => {
+      const raw = item.data ? item.data.date : item.date;
+      const year = String(new Date(raw).getFullYear());
+      if (!groups.has(year)) groups.set(year, []);
+      groups.get(year).push(item);
+    });
+    return [...groups.entries()]
+      .sort((a, b) => Number(b[0]) - Number(a[0]))
+      .map(([year, items]) => ({ year, items }));
   });
 
   // Pass through static assets (CSS, images, favicon) unchanged.

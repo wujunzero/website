@@ -3,149 +3,182 @@ layout: base
 eleventyComputed:
   permalink: "/"
 ---
-{%- assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" -%}
-<div class="outercontainer">
-    {% include "includes/nav.html" %}
+{%- assign pubs = collections.publications | sortDesc: "date" -%}
+{%- assign total = pubs.size -%}
+{%- assign journals = 0 -%}
+{%- assign conferences = 0 -%}
+{%- for p in pubs -%}
+  {%- if p.data.type == "journal" -%}{%- assign journals = journals | plus: 1 -%}{%- endif -%}
+  {%- if p.data.type == "conference" -%}{%- assign conferences = conferences | plus: 1 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign years = pubs | groupByYear -%}
+{%- assign newest = pubs.first.data.date | date: "%Y" -%}
+{%- assign oldest = pubs.last.data.date | date: "%Y" -%}
+{%- comment -%}
+  Recruiting banner switch: flip to true to show the banner between About and
+  News. Styles live in .recruit / .recruit.is-on (hidden by default).
+{%- endcomment -%}
+{%- assign show_recruit = false -%}
 
-    <div class="container body">
-        <!-- Home Section -->
-        <div class="content heading anchor" id="home">
-            <div class="img">
-                <!-- WebP first (≈3x smaller); JPEG fallback for older browsers. -->
-                <picture>
-                    <source srcset="{{ '/assets/Jun_Wu.webp' | url }}" type="image/webp">
-                    <img class="img_responsive" src="{{ '/assets/Jun_Wu.jpg' | url }}" alt="Jun Wu"
-                        width="180" height="256" style="width:180px; height:auto; border-radius:8px;">
-                </picture>
-            </div>
-            <div class="text info">
-                <h1>Jun Wu</h1>
-                <p></p>
-                <div>Lecturer</div>
-                <div>School of Computer Science</div>
-                <div>Nanjing University of Information Science & Technology, Nanjing, China</div>
-                <div>Email:&nbsp;{{ site.email }}; wujun@nuist.edu.cn</div>
-                <p>
-                    <span>
-                        <div itemscope itemtype="https://schema.org/Person">
-                            <a itemprop="sameAs" content="https://orcid.org/{{ site.orcid }}"
-                                href="https://orcid.org/{{ site.orcid }}" target="orcid.widget"
-                                rel="me noopener noreferrer" style="vertical-align:top;">
-                                <img src="{{ '/assets/orcid.webp' | url }}" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
-                                https://orcid.org/{{ site.orcid }}
-                            </a>
-                        </div>
-                    </span>
-                </p>
-                <p>
-                    <span>
-                        <!-- No `&label=` on this URL: it would override the label in the JSON,
-                             which the crawler switches to "citations (S2)" on a degraded run. -->
-                        <a href="{{ site.scholarUrl }}">Google Scholar
-                            <img style="display:inline-block;"
-                                src="https://img.shields.io/endpoint?url={{ gsDataBaseUrl | append: 'google-scholar-stats/gs_data_shieldsio.json' | url_encode }}&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat"
-                                alt="Google Scholar citations">
-                        </a>
-                        /
-                        <span><a href="{{ site.dblpUrl }}">DBLP</a></span>
-                        /
-                        <span><a href="https://github.com/{{ site.github }}">Github</a></span>
-                        /
-                        <span><a href="{{ site.semanticScholarUrl }}">Semantic Scholar</a></span>
-                    </span>
-                </p>
-            </div>
-            <div class="text">
-                <p>I have broad interest in artificial intelligence and its applications.
-                    My research is concerned with the practical resolution of NP-hard problems,
-                    including Boolean Satisfiability Problem(SAT),
-                    Maximum Satisfiability Problem (MaxSAT),
-                    Minimum Vertex Cover Problem (MVC),
-                    Maximum Clique Problem (MC) and
-                    Graph Coloring Problem (GC).
-                    I am particularly interested in the combinatorial problem with the heuristic algorithm and exact
-                    algorithm.
-                </p>
-            </div>
-        </div>
-
-        <!-- Educations Section -->
-        <div class="content anchor" id="educations">
-            <div class="text" style="z-index:1;position:relative">
-                <h2 style="margin-bottom:.5em">Educations</h2>
-                <ul style="padding-bottom:1em">
-                    <li>September 2010 - July 2014: B.Sc in computer science and technology, Jilin University, China
-                    </li>
-                    <li>September 2015 - July 2017: M.Sc in computer science and technology, Northeast Normal
-                        University, China</li>
-                    <li>October 2018 - October 2019: Visiting Ph.D. in University of Picardie Jules Verne, France</li>
-                    <li>September 2017 - January 2023: Ph.D in information science and technology, Northeast Normal
-                        University, China</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Teaching Section -->
-        <div class="content anchor" id="teaching">
-            <div class="text" style="z-index:1;position:relative">
-                <h2 style="margin-bottom:.5em">Teaching</h2>
-                <ul style="padding-bottom:1em">
-                    <li>Algorithm Design and Analysis, Spring 2025</li>
-                    <li>Algorithm Design and Analysis, Spring 2024</li>
-                    <li>Discrete Mathematics, Spring 2024</li>
-                    <li>Block Chain, Fall 2023</li>
-                    <li>Randomized Algorithm. Fall 2023</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="content anchor" id="projects">
-            <div class="text" style="z-index:1;position:relative">
-                <h2 style="margin-bottom:.5em">Projects</h2>
-                <ul style="padding-bottom:1em">
-                    <li>Supported by NSFC under Grant No. 62306149 (2024 - 2026).</li>
-                    <li>Supported by the Startup Foundation for Introducing Talent of NUIST (2023 - 2025).</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Publications Section -->
-        <div class="content anchor" id="publications">
-            <div class="text" style="z-index:1;position:relative">
-                <h2 style="margin-bottom:0em">Publications</h2>
-            </div>
-            <br><br>
-            <div id="pubs">
-                {% assign pubs = collections.publications | sortDesc: "date" %}
-                {% for pub in pubs %}
-                <div class="publication">
-                    <div class="text">
-                        <div class="title"><a href="{{ pub.url | url }}">{{ pub.data.title }}</a></div>
-                        <div class="authors">
-                            {%- assign primary = pub.data.author | strip: "*" -%}
-                            {%- for name in pub.data.authors -%}
-                            {%- assign clean = name | strip: "*" -%}
-                            {%- if clean == primary -%}<span class="author jw">{{ name }}</span>{%- else -%}<span class="author">{{ name }}</span>{%- endif -%}
-                            {%- unless forloop.last %}, {% endunless -%}
-                            {%- endfor -%}
-                        </div>
-                        <div>
-                            {% if pub.data.venue %}
-                            <span class="venue tag"><a href="{{ pub.data.venue_url }}">{{ pub.data.venue }}</a></span>
-                            {% endif %}
-                            {% if pub.data.paper %}
-                            / <span class="venue tag"><a href="{{ pub.data.paper }}">Paper</a></span>
-                            {% endif %}
-                            {% if pub.data.code %}
-                            / <span class="venue tag"><a href="{{ pub.data.code }}">Code</a></span>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
+<section class="hero wrap" id="about">
+  <div class="hero-body">
+    <div class="hero-identity">
+      <h1>Jun Wu</h1>
+      <p class="hero-role">Lecturer, School of Computer Science</p>
+      <p class="hero-role">Nanjing University of Information Science &amp; Technology, Nanjing, China</p>
+      <a class="hero-email" href="mailto:wujun@nuist.edu.cn">wujun@nuist.edu.cn</a>
     </div>
+    <p class="hero-statement">
+      I work on the practical resolution of NP-hard problems — Boolean satisfiability (SAT), MaxSAT,
+      maximum clique, vertex cover and graph coloring — with an emphasis on heuristics and exact
+      algorithms that hold up on real instances.
+    </p>
+    <div class="identities">
+      <a href="https://orcid.org/{{ site.orcid }}" rel="me noopener">ORCID</a>
+      <a href="{{ site.scholarUrl }}" rel="noopener">Google Scholar</a>
+      <a href="{{ site.dblpUrl }}" rel="noopener">DBLP</a>
+      <a href="https://github.com/{{ site.github }}" rel="me noopener">GitHub</a>
+      <a href="{{ site.semanticScholarUrl }}" rel="noopener">Semantic Scholar</a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <picture>
+      <source srcset="{{ '/assets/Jun_Wu.webp' | url }}" type="image/webp">
+      <img src="{{ '/assets/Jun_Wu.jpg' | url }}" alt="Portrait of Jun Wu" width="180" height="256"
+        loading="eager" decoding="async">
+    </picture>
+  </div>
+</section>
+
+{% if show_recruit %}
+<div class="wrap">
+  <div class="recruit is-on">
+    <p>I am looking for motivated master's students interested in combinatorial optimization and
+      heuristic search. <a href="mailto:wujun@nuist.edu.cn">Get in touch</a>.</p>
+  </div>
 </div>
+{% endif %}
+
+<section class="section" id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">News</h2>
+      <p class="section-meta">last updated {{ news.first.date }}</p>
+    </div>
+    <ul class="news">
+      {%- for item in news %}
+      <li>
+        <time datetime="{{ item.date | replace: '.', '-' }}">{{ item.date }}</time>
+        <p>{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="publications">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Publications</h2>
+      <p class="section-meta">{{ total }} papers · {{ oldest }} – {{ newest }}</p>
+    </div>
+
+    <div class="filter">
+      <div class="segmented" role="group" aria-label="Filter publications by type">
+        <button type="button" data-filter="all" aria-pressed="true">All {{ total }}</button>
+        <button type="button" data-filter="journal" aria-pressed="false">Journal {{ journals }}</button>
+        <button type="button" data-filter="conference" aria-pressed="false">Conference {{ conferences }}</button>
+      </div>
+      <div class="jump">
+        <span>Jump to</span>
+        {%- for y in years %}
+        <a href="#year-{{ y.year }}">{{ y.year }}</a>
+        {%- endfor %}
+      </div>
+    </div>
+
+    {%- for y in years %}
+    <section class="year-group" data-year-group="{{ y.year }}">
+      <h3 class="year-label" id="year-{{ y.year }}">{{ y.year }}</h3>
+      <ul class="pub-list">
+        {%- for pub in y.items %}
+        <li class="pub" data-type="{{ pub.data.type | default: 'other' }}">
+          <a class="pub-title" href="{{ pub.url | url }}">{{ pub.data.title }}</a>
+          <p class="pub-authors">
+            {%- assign primary = pub.data.author | remove: "*" | strip -%}
+            {%- for name in pub.data.authors -%}
+              {%- assign clean = name | remove: "*" | strip -%}
+              {%- if clean == primary -%}
+                <span class="self">{{ clean }}{% if name contains "*" %}<sup>*</sup>{% endif %}</span>
+              {%- else -%}
+                {{ clean }}{% if name contains "*" %}<sup>*</sup>{% endif %}
+              {%- endif -%}
+              {%- unless forloop.last %}, {% endunless -%}
+            {%- endfor -%}
+          </p>
+          <p class="pub-meta">
+            {%- if pub.data.type %}<span class="badge">{{ pub.data.type }}</span>{% endif %}
+            {%- if pub.data.venue -%}
+              {%- if pub.data.venue_url %}<a href="{{ pub.data.venue_url }}" rel="noopener">{{ pub.data.venue }}</a>
+              {%- else %}<span>{{ pub.data.venue }}</span>{%- endif -%}
+            {%- endif %}
+            <span>{{ pub.data.date | date: "%Y" }}</span>
+            {%- if pub.data.paper %}<a href="{{ pub.data.paper }}" rel="noopener">Paper</a>{% endif %}
+            {%- if pub.data.code %}<a href="{{ pub.data.code }}" rel="noopener">Code</a>{% endif %}
+          </p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <ul class="entry-list">
+      <li class="entry">
+        <span class="entry-main">National Natural Science Foundation of China (NSFC), Grant No. 62306149</span>
+        <span class="entry-meta">2024 – 2026</span>
+      </li>
+      <li class="entry">
+        <span class="entry-main">Startup Foundation for Introducing Talent of NUIST</span>
+        <span class="entry-meta">2023 – 2025</span>
+      </li>
+    </ul>
+    {%- comment -%} TODO: add project titles once they can be published. {%- endcomment -%}
+  </div>
+</section>
+
+<section class="section" id="teaching">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Teaching</h2>
+    </div>
+    <ul class="entry-list">
+      <li class="entry">
+        <span class="entry-main">Algorithm Design and Analysis</span>
+        <span class="entry-meta">Spring 2025</span>
+      </li>
+      <li class="entry">
+        <span class="entry-main">Algorithm Design and Analysis</span>
+        <span class="entry-meta">Spring 2024</span>
+      </li>
+      <li class="entry">
+        <span class="entry-main">Discrete Mathematics</span>
+        <span class="entry-meta">Spring 2024</span>
+      </li>
+      <li class="entry">
+        <span class="entry-main">Blockchain</span>
+        <span class="entry-meta">Fall 2023</span>
+      </li>
+      <li class="entry">
+        <span class="entry-main">Randomized Algorithm</span>
+        <span class="entry-meta">Fall 2023</span>
+      </li>
+    </ul>
+  </div>
+</section>

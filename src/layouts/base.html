@@ -4,7 +4,11 @@
   {% include "includes/head.html" %}
 </head>
 <body>
-  {{ content }}
+  {% include "includes/nav.html" %}
+  <main id="main" tabindex="-1">
+    {{ content }}
+  </main>
   {% include "includes/footer.html" %}
+  <script src="{{ '/assets/main.js' | url }}" defer></script>
 </body>
 </html>

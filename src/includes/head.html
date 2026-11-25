@@ -1,10 +1,10 @@
 <meta charset="utf-8">
 <meta name="author" content="{{ site.name }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 
 {%- comment -%}
   Build a page-specific heading; reuse it for the <title> and social cards.
-  (Same logic as the Jekyll head.html.)
 {%- endcomment -%}
 {%- if title -%}
   {%- assign page_heading = title | append: ' | ' | append: site.name -%}
@@ -17,6 +17,22 @@
 {%- endif -%}
 <title>{{ page_heading }}</title>
 
+{%- comment -%}
+  Runs before first paint so there is no flash of the wrong theme, and marks the
+  document as JS-capable so CSS can collapse the nav into a menu button. Without
+  JS the nav links stay visible and usable.
+{%- endcomment -%}
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add("js");
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+
 <link rel="shortcut icon" href="{{ '/assets/favicon.ico' | url }}">
 <meta name="description" content="{{ site.description }}">
 <meta name="keywords"
@@ -27,7 +43,7 @@
 <meta property="og:url" content="{{ siteUrl }}{{ page.url }}">
 <meta property="og:title" content="{{ page_heading }}">
 <meta property="og:description" content="{{ site.description }}">
-<meta property="og:image" content="{{ site.url }}/assets/Jun_Wu.webp">
+<meta property="og:image" content="{{ site.url }}/assets/Jun_Wu.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">

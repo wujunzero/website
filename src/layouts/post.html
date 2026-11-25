@@ -1,35 +1,41 @@
 ---
 layout: base
 ---
-<div class="container body">
-    <div class="content">
-        <div class="publication">
-            <div class="text">
-                <h1>{{ title }}</h1>
+<div class="wrap post">
+  <article>
+    <h1>{{ title }}</h1>
 
-                {% if authors %}
-                {% assign primary = author | strip: "*" %}
-                <div class="authors">
-                    {% for name in authors %}{% assign clean = name | strip: "*" %}{% if clean == primary %}<span class="author jw">{{ name }}</span>{% else %}<span class="author">{{ name }}</span>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
-                </div>
-                {% endif %}
-                <p>
-                    {% if venue %}
-                    <span class="venue tag"><a href="{{ venue_url }}" target="_blank" rel="noopener">{{ venue }}</a></span>
-                    {% endif %}
-                    {% if type %}
-                    / {{ type }}
-                    {% endif %}
-                    {% if paper %}
-                    / <span class="venue tag"><a href="{{ paper }}" target="_blank" rel="noopener">Paper</a></span>
-                    {% endif %}
-                    {% if code %}
-                    / <span class="venue tag"><a href="{{ code }}" target="_blank" rel="noopener">Code</a></span>
-                    {% endif %}
-                </p>
+    {%- assign primary = author | remove: "*" | strip -%}
+    {%- if authors %}
+    <p class="pub-authors">
+      {%- for name in authors -%}
+        {%- assign clean = name | remove: "*" | strip -%}
+        {%- if clean == primary -%}
+          <span class="self">{{ clean }}{% if name contains "*" %}<sup>*</sup>{% endif %}</span>
+        {%- else -%}
+          {{ clean }}{% if name contains "*" %}<sup>*</sup>{% endif %}
+        {%- endif -%}
+        {%- unless forloop.last %}, {% endunless -%}
+      {%- endfor -%}
+    </p>
+    {%- endif %}
 
-                <p><a href="{{ '/' | url }}">&larr; Back to homepage</a></p>
-            </div>
-        </div>
-    </div>
+    <p class="pub-meta">
+      {%- if type %}<span class="badge">{{ type }}</span>{% endif %}
+      {%- if venue -%}
+        {%- if venue_url %}<a href="{{ venue_url }}" rel="noopener">{{ venue }}</a>
+        {%- else %}<span>{{ venue }}</span>{%- endif -%}
+      {%- endif %}
+      <span>{{ date | date: "%Y" }}</span>
+      {%- if paper %}<a href="{{ paper }}" rel="noopener">Paper</a>{% endif %}
+      {%- if code %}<a href="{{ code }}" rel="noopener">Code</a>{% endif %}
+    </p>
+
+    {%- assign body = content | strip -%}
+    {%- if body != "" %}
+    <div class="post-body">{{ content }}</div>
+    {%- endif %}
+  </article>
+
+  <a class="back" href="{{ '/' | url }}#publications">← Back to publications</a>
 </div>

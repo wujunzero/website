@@ -1,11 +1,12 @@
-<footer
-    style="text-align:center; padding:20px 0; margin-top:30px; border-top:1px solid #eee; color:#777; font-size:13px;">
-    <div class="container">
-        <p>© {{ 'now' | date: "%Y" }} {{ site.name }}. All rights reserved.</p>
-        <p>
-            <a href="mailto:{{ site.email }}" style="color:#0055AA;">{{ site.email }}</a> |
-            <a href="https://github.com/{{ site.github }}" style="color:#0055AA;">GitHub</a> |
-            <a href="{{ site.scholarUrl }}" style="color:#0055AA;">Google Scholar</a>
-        </p>
-    </div>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© {{ 'now' | date: "%Y" }} {{ site.name }}. Built with Eleventy.</p>
+    <nav aria-label="Elsewhere">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <a href="https://github.com/{{ site.github }}">GitHub</a>
+      <a href="{{ site.scholarUrl }}">Google Scholar</a>
+      <a href="https://orcid.org/{{ site.orcid }}">ORCID</a>
+      <a href="{{ site.dblpUrl }}">DBLP</a>
+    </nav>
+  </div>
 </footer>

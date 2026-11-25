@@ -25,11 +25,23 @@ src/
   publications/   one .md per paper (12)
   layouts/        base.html, post.html
   includes/       head.html, nav.html, footer.html
-  assets/         css, images
-  data/site.json  global site metadata (url = site root, the only prefix source)
+  assets/         main.css (design tokens), main.js (≤3KB), images
+  data/           site.json (metadata), news.json (homepage News items)
 scripts/
   generate-feeds.js   writes dist/rss.xml + dist/sitemap.xml (eleventy.after hook)
 ```
+
+### Conventions
+
+- Add a paper: drop a `.md` in `publications/` with `date`, `type`
+  (`journal` / `conference`), `authors`, `venue`, `paper`, `code`. The homepage
+  groups by year itself via the `groupByYear` filter — no template edit needed.
+- Add a news line: append to `data/news.json` (`{ "date": "2026.01", "text": "…" }`).
+- Recruiting banner: flip `show_recruit` at the top of `pages/home.html`.
+- Colours/type live as CSS custom properties at the top of `assets/main.css`;
+  dark mode keys off `prefers-color-scheme` plus an explicit `data-theme`
+  override. `main.js` only handles theme, the mobile menu, the publication
+  filter and scroll highlighting — everything works without it.
 
 ## GitHub Pages CI
 
