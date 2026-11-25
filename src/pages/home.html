@@ -24,15 +24,15 @@ eleventyComputed:
                 <div>Lecturer</div>
                 <div>School of Computer Science</div>
                 <div>Nanjing University of Information Science & Technology, Nanjing, China</div>
-                <div>Email:&nbsp;wujunzero@gmail.com; wujun@nuist.edu.cn</div>
+                <div>Email:&nbsp;{{ site.email }}; wujun@nuist.edu.cn</div>
                 <p>
                     <span>
                         <div itemscope itemtype="https://schema.org/Person">
-                            <a itemprop="sameAs" content="https://orcid.org/0000-0002-5239-5126"
-                                href="https://orcid.org/0000-0002-5239-5126" target="orcid.widget"
+                            <a itemprop="sameAs" content="https://orcid.org/{{ site.orcid }}"
+                                href="https://orcid.org/{{ site.orcid }}" target="orcid.widget"
                                 rel="me noopener noreferrer" style="vertical-align:top;">
                                 <img src="{{ '/assets/orcid.webp' | url }}" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
-                                https://orcid.org/0000-0002-5239-5126
+                                https://orcid.org/{{ site.orcid }}
                             </a>
                         </div>
                     </span>
@@ -41,17 +41,17 @@ eleventyComputed:
                     <span>
                         <!-- No `&label=` on this URL: it would override the label in the JSON,
                              which the crawler switches to "citations (S2)" on a degraded run. -->
-                        <a href="https://scholar.google.com/citations?user=xhn6R7EAAAAJ">Google Scholar
+                        <a href="{{ site.scholarUrl }}">Google Scholar
                             <img style="display:inline-block;"
                                 src="https://img.shields.io/endpoint?url={{ gsDataBaseUrl | append: 'google-scholar-stats/gs_data_shieldsio.json' | url_encode }}&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat"
                                 alt="Google Scholar citations">
                         </a>
                         /
-                        <span><a href="https://dblp.org/pid/20/3894-20.html">DBLP</a></span>
+                        <span><a href="{{ site.dblpUrl }}">DBLP</a></span>
                         /
-                        <span><a href="https://github.com/wujunzero">Github</a></span>
+                        <span><a href="https://github.com/{{ site.github }}">Github</a></span>
                         /
-                        <span><a href="https://www.semanticscholar.org/author/2146669050">Semantic Scholar</a></span>
+                        <span><a href="{{ site.semanticScholarUrl }}">Semantic Scholar</a></span>
                     </span>
                 </p>
             </div>
