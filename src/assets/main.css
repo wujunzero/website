@@ -41,8 +41,7 @@ h5,
 h6,
 div.title,
 div.ftheader,
-span.venue,
-span.highlight {
+span.venue {
     font-weight: 600;
 }
 
@@ -101,12 +100,6 @@ div.authors a:visited {
 div.content a:hover,
 div.content a:hover div.text,
 div.ftsubheader a:hover {
-    text-decoration: underline;
-}
-
-#span.jw {
-    color: #000000;
-    font-weight: 600;
     text-decoration: underline;
 }
 
@@ -234,20 +227,9 @@ div.authors {
 }
 
 span.venue,
-span.highlight,
 div.publication span.tag {
     padding-right: 0px;
     font-size: 100%;
-}
-
-span.highlight,
-span.highlight a:link,
-span.highlight a:visited {
-    color: #BB2222;
-}
-
-span.fullvenue {
-    padding-left: 8px;
 }
 
 div.anchor {
