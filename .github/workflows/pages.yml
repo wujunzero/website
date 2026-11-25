@@ -1,7 +1,6 @@
-name: Build and deploy Jekyll site to Pages
+name: Build and deploy site to Pages
 
-# Builds the site with the repo's own Gemfile.lock (unlike the legacy
-# GitHub Pages builder, which ignored it and used its bundled gems).
+# Builds the site with Eleventy (Node), then deploys to GitHub Pages.
 on:
   push:
     branches: [main]
@@ -12,7 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment, but never cancel an in-progress one.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -24,23 +22,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@e81a8fa391b11a595c1b7ed84177cc0fe02faf83 # v1
+      - name: Setup Node
+        uses: actions/setup-node@352ed2970b9385428dc025452001a205c3c6b9d7 # v5
         with:
-          ruby-version: '3.2'
-          bundler-cache: true
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npm run build
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-      - name: Build with Jekyll
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
 
   deploy:
     # Only deploy from main; branch runs are build-only verification.

@@ -1,0 +1,35 @@
+---
+layout: base
+---
+<div class="container body">
+    <div class="content">
+        <div class="publication">
+            <div class="text">
+                <h1>{{ title }}</h1>
+
+                {% if authors %}
+                {% assign primary = author | strip: "*" %}
+                <div class="authors">
+                    {% for name in authors %}{% assign clean = name | strip: "*" %}{% if clean == primary %}<span class="author jw">{{ name }}</span>{% else %}<span class="author">{{ name }}</span>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+                </div>
+                {% endif %}
+                <p>
+                    {% if venue %}
+                    <span class="venue tag"><a href="{{ venue_url }}" target="_blank" rel="noopener">{{ venue }}</a></span>
+                    {% endif %}
+                    {% if type %}
+                    / <span class="type">{{ type }}</span>
+                    {% endif %}
+                    {% if paper %}
+                    / <span class="venue tag"><a href="{{ paper }}" target="_blank" rel="noopener">Paper</a></span>
+                    {% endif %}
+                    {% if code %}
+                    / <span class="venue tag"><a href="{{ code }}" target="_blank" rel="noopener">Code</a></span>
+                    {% endif %}
+                </p>
+
+                <p><a href="{{ siteBase }}">&larr; Back to homepage</a></p>
+            </div>
+        </div>
+    </div>
+</div>

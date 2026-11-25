@@ -1,0 +1,66 @@
+<meta charset="utf-8">
+<meta name="author" content="{{ site.name }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{%- comment -%}
+  Build a page-specific heading; reuse it for the <title> and social cards.
+  (Same logic as the Jekyll head.html.)
+{%- endcomment -%}
+{%- if title -%}
+  {%- assign page_heading = title | append: ' | ' | append: site.name -%}
+{%- else -%}
+  {%- if page.url contains "/404" -%}
+    {%- assign page_heading = '404 - ' | append: site.name -%}
+  {%- else -%}
+    {%- assign page_heading = site.name | append: ' - Academic Homepage' -%}
+  {%- endif -%}
+{%- endif -%}
+<title>{{ page_heading }}</title>
+
+<link rel="shortcut icon" href="{{ siteBase }}/assets/favicon.ico">
+<meta name="description" content="{{ site.description }}">
+<meta name="keywords"
+  content="Jun Wu, Computer Science, Combinatorial Optimization, SAT, MaxSAT, Clique, Vertex Cover, Heuristic Algorithm, NUIST">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}">
+<meta property="og:title" content="{{ page_heading }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:image" content="{{ site.url }}/assets/Jun_Wu.webp">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page_heading }}">
+<meta name="twitter:description" content="{{ site.description }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ siteUrl }}{{ page.url }}">
+
+<!-- RSS/Atom feed -->
+<link type="application/atom+xml" rel="alternate" href="{{ site.url }}/rss.xml" title="{{ site.title }}">
+
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jun Wu",
+  "givenName": "Jun",
+  "familyName": "Wu",
+  "jobTitle": "Lecturer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Nanjing University of Information Science & Technology"
+  },
+  "url": "{{ site.url }}",
+  "email": "wujunzero@gmail.com",
+  "sameAs": [
+    "https://github.com/wujunzero",
+    "https://scholar.google.com/citations?user=xhn6R7EAAAAJ",
+    "https://orcid.org/0000-0002-5239-5126",
+    "https://dblp.org/pid/20/3894-20.html"
+  ]
+}
+</script>
+<link rel="stylesheet" href="{{ siteBase }}/assets/main.css">
