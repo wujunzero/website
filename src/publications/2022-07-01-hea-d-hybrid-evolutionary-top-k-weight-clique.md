@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HEA-D: A Hybrid Evolutionary Algorithm for the Diversified Top-$k$ Weight Clique Search Problem"
+title: "HEA-D: A Hybrid Evolutionary Algorithm for the Diversified Top-k Weight Clique Search Problem"
 date: "2022-07-01"
 tags: [research]
 type: conference

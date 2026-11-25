@@ -3,6 +3,7 @@ layout: post
 title: "Which courses to choose? recommending courses to groups of students in online tutoring platforms"
 date: "2022-09-10"
 tags: [research]
+type: journal
 author: "Jun Wu*"
 authors:
   - "Lu Jiang"

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Restart Local Search for Solving Diversified Top-$k$ Weight Clique Search Problem"
+title: "A Restart Local Search for Solving Diversified Top-k Weight Clique Search Problem"
 date: "2021-10-21"
 tags: [research]
 type: journal

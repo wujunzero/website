@@ -3,6 +3,7 @@ layout: post
 title: "Multi-view contrastive heterogeneous graph attention network for lncRNA–disease association prediction"
 date: "2023-01-19"
 tags: [research]
+type: journal
 author: "Jun Wu*"
 authors:
   - "Xiaosa Zhao"
