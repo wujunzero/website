@@ -1,8 +1,9 @@
 // Eleventy configuration.
 //
 // This site is a GitHub Pages *project* site, served from /website/.
-// Eleventy does not have Jekyll-style `baseurl`/`relative_url` built in, so
-// we expose a `siteBase` value to templates and prefix asset URLs manually.
+// `src/data/site.json` -> `url` is the authoritative absolute site root; the
+// Pages prefix is derived from it and fed to Eleventy's `pathPrefix`, so
+// templates use `{{ "/assets/x.css" | url }}` instead of hand-built prefixes.
 //
 // The build output goes to `dist/`, which `actions/upload-pages-artifact`
 // uploads to Pages.
@@ -10,10 +11,12 @@
 const siteData = require("./src/data/site.json");
 
 module.exports = function (eleventyConfig) {
-  const siteBase = "/website";
+  // "https://wujunzero.github.io/website" -> "/website/"
+  const siteUrl = siteData.url.replace(/\/+$/, "");
+  const pathname = new URL(siteUrl).pathname.replace(/\/+$/, "");
+  const pathPrefix = `${pathname}/`;
 
-  eleventyConfig.addGlobalData("siteBase", siteBase);
-  eleventyConfig.addGlobalData("siteUrl", `https://wujunzero.github.io${siteBase}`);
+  eleventyConfig.addGlobalData("siteUrl", siteUrl);
 
   // Expose site.json as `site` in Liquid templates (Jekyll-style).
   eleventyConfig.addGlobalData("site", siteData);
@@ -45,11 +48,7 @@ module.exports = function (eleventyConfig) {
   });
 
   // Pass through static assets (CSS, images, favicon) unchanged.
-  eleventyConfig.addPassthroughCopy({ "src/assets/main.css": "assets/main.css" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/Jun_Wu.jpg": "assets/Jun_Wu.jpg" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/Jun_Wu.webp": "assets/Jun_Wu.webp" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/favicon.ico": "assets/favicon.ico" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/orcid.webp": "assets/orcid.webp" });
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy("robots.txt");
 
   // Expose publications as a named collection so templates can use
@@ -58,21 +57,32 @@ module.exports = function (eleventyConfig) {
     collectionApi.getFilteredByTag("research")
   );
 
-  // Markdown: keep Liquid tags and HTML blocks intact.
+  // Markdown: keep raw HTML blocks intact. The homepage is a .html template
+  // (it is pure markup, so running it through markdown only injected stray
+  // <p> wrappers); this only applies to the publication .md files.
   const MarkdownIt = require("markdown-it");
   const mdIt = MarkdownIt({ html: true });
-  mdIt.disable("code");
   eleventyConfig.setLibrary("md", mdIt);
 
+  // Generate rss.xml / sitemap.xml after Eleventy has written dist/.
+  // Hooking the event (instead of chaining a second npm script) means
+  // `npm run serve` produces up-to-date feeds too.
+  eleventyConfig.on("eleventy.after", () => {
+    require("./scripts/generate-feeds.js")();
+  });
+
   return {
+    // Drives the `url` filter and the `--serve` dev server path.
+    pathPrefix,
     dir: {
       input: "src",
       output: "dist",
       includes: "includes",
       layouts: "layouts",
     },
-    // Layouts and includes live in src/ and are not rendered as standalone pages.
+    // Layouts and includes live in src/ and are not rendered as standalone
+    // pages — Eleventy already skips `dir.layouts` / `dir.includes`, so no
+    // explicit exclusion is needed here.
     templateFormats: ["md", "html", "liquid"],
-    eleventyExcludeIglob: ["layouts/**", "includes/**", "rss.xml", "sitemap.xml"],
   };
 };

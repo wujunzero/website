@@ -4,13 +4,13 @@
   "private": true,
   "description": "Jun Wu — academic homepage (GitHub Pages project site)",
   "scripts": {
-    "build": "eleventy && node scripts/generate-feeds.js",
+    "build": "eleventy",
     "serve": "eleventy --serve",
-    "watch": "eleventy --watch"
+    "watch": "eleventy --watch",
+    "feeds": "node scripts/generate-feeds.js"
   },
   "dependencies": {
-    "@11ty/eleventy": "^3.0.0",
-    "@quasibit/eleventy-plugin-sitemap": "^2.2.0"
+    "@11ty/eleventy": "^3.0.0"
   },
   "engines": {
     "node": ">=20"

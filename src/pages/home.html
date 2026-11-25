@@ -3,10 +3,7 @@ layout: base
 eleventyComputed:
   permalink: "/"
 ---
-{% assign pubs = collections.publications | sortDesc: "date" %}
-
-{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-
+{%- assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" -%}
 <div class="outercontainer">
     {% include "includes/nav.html" %}
 
@@ -16,8 +13,8 @@ eleventyComputed:
             <div class="img">
                 <!-- WebP first (≈3x smaller); JPEG fallback for older browsers. -->
                 <picture>
-                    <source srcset="{{ siteBase }}/assets/Jun_Wu.webp" type="image/webp">
-                    <img class="img_responsive" src="{{ siteBase }}/assets/Jun_Wu.jpg" alt="Jun Wu"
+                    <source srcset="{{ '/assets/Jun_Wu.webp' | url }}" type="image/webp">
+                    <img class="img_responsive" src="{{ '/assets/Jun_Wu.jpg' | url }}" alt="Jun Wu"
                         width="180" height="256" style="width:180px; height:auto; border-radius:8px;">
                 </picture>
             </div>
@@ -34,7 +31,7 @@ eleventyComputed:
                             <a itemprop="sameAs" content="https://orcid.org/0000-0002-5239-5126"
                                 href="https://orcid.org/0000-0002-5239-5126" target="orcid.widget"
                                 rel="me noopener noreferrer" style="vertical-align:top;">
-                                <img src="{{ siteBase }}/assets/orcid.webp" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
+                                <img src="{{ '/assets/orcid.webp' | url }}" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
                                 https://orcid.org/0000-0002-5239-5126
                             </a>
                         </div>
@@ -46,7 +43,8 @@ eleventyComputed:
                              which the crawler switches to "citations (S2)" on a degraded run. -->
                         <a href="https://scholar.google.com/citations?user=xhn6R7EAAAAJ">Google Scholar
                             <img style="display:inline-block;"
-                                src="https://img.shields.io/endpoint?url={{ gsDataBaseUrl | append: 'google-scholar-stats/gs_data_shieldsio.json' | url_encode }}&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat">
+                                src="https://img.shields.io/endpoint?url={{ gsDataBaseUrl | append: 'google-scholar-stats/gs_data_shieldsio.json' | url_encode }}&amp;logo=Google%20Scholar&amp;labelColor=f6f6f6&amp;color=9cf&amp;style=flat"
+                                alt="Google Scholar citations">
                         </a>
                         /
                         <span><a href="https://dblp.org/pid/20/3894-20.html">DBLP</a></span>
@@ -123,7 +121,7 @@ eleventyComputed:
                 {% for pub in pubs %}
                 <div class="publication">
                     <div class="text">
-                        <div class="title"><a href="{{ siteBase }}/{{ pub.data.title | slugify }}/">{{ pub.data.title }}</a></div>
+                        <div class="title"><a href="{{ pub.url | url }}">{{ pub.data.title }}</a></div>
                         <div class="authors">
                             {%- assign primary = pub.data.author | strip: "*" -%}
                             {%- for name in pub.data.authors -%}

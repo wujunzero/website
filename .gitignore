@@ -4,6 +4,7 @@ dist
 
 # WorkBuddy AI project data (memory, skills, etc.)
 .workbuddy-ai/
+.workbuddy/
 
 # Untracked audit doc (kept locally, not for publish)
 GITHUB_PAGES_REVIEW.md

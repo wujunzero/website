@@ -17,14 +17,14 @@
 {%- endif -%}
 <title>{{ page_heading }}</title>
 
-<link rel="shortcut icon" href="{{ siteBase }}/assets/favicon.ico">
+<link rel="shortcut icon" href="{{ '/assets/favicon.ico' | url }}">
 <meta name="description" content="{{ site.description }}">
 <meta name="keywords"
   content="Jun Wu, Computer Science, Combinatorial Optimization, SAT, MaxSAT, Clique, Vertex Cover, Heuristic Algorithm, NUIST">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ site.url }}">
+<meta property="og:url" content="{{ siteUrl }}{{ page.url }}">
 <meta property="og:title" content="{{ page_heading }}">
 <meta property="og:description" content="{{ site.description }}">
 <meta property="og:image" content="{{ site.url }}/assets/Jun_Wu.webp">
@@ -63,4 +63,4 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="{{ siteBase }}/assets/main.css">
+<link rel="stylesheet" href="{{ '/assets/main.css' | url }}">
