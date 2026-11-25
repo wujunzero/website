@@ -1,0 +1,17 @@
+---
+permalink: "sitemap.xml"
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for post in collections.publications | sortDesc: "date" %}
+  <url>
+    <loc>{{ siteUrl }}/{{ post.fileSlug }}/</loc>
+    {% if post.data.date %}
+    <lastmod>{{ post.data.date | date: "%Y-%m-%d" }}</lastmod>
+    {% endif %}
+  </url>
+  {% endfor %}
+  <url>
+    <loc>{{ siteUrl }}/rss.xml</loc>
+  </url>
+</urlset>

@@ -1,10 +1,10 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
-.bundle
+node_modules
+dist
+package-lock.json
 .DS_Store
 
 # WorkBuddy AI project data (memory, skills, etc.)
 .workbuddy-ai/
+
+# Untracked audit doc (kept locally, not for publish)
+GITHUB_PAGES_REVIEW.md
