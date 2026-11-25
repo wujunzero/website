@@ -22,26 +22,91 @@ npm run build          # Eleventy → dist/  (+ rss.xml, sitemap.xml)
 ```
 src/
   pages/          home.html, 404.md
-  publications/   one .md per paper (12)
+  publications/   one .md per paper (19)
   layouts/        base.html, post.html
   includes/       head.html, nav.html, footer.html
-  assets/         main.css (design tokens), main.js (≤3KB), images
+  assets/         main.css (design tokens), main.js (~4.6KB), images
   data/           site.json (metadata), news.json (homepage News items)
 scripts/
   generate-feeds.js   writes dist/rss.xml + dist/sitemap.xml (eleventy.after hook)
 ```
 
-### Conventions
+## Adding content
 
-- Add a paper: drop a `.md` in `publications/` with `date`, `type`
-  (`journal` / `conference`), `authors`, `venue`, `paper`, `code`. The homepage
-  groups by year itself via the `groupByYear` filter — no template edit needed.
-- Add a news line: append to `data/news.json` (`{ "date": "2026.01", "text": "…" }`).
-- Recruiting banner: flip `show_recruit` at the top of `pages/home.html`.
-- Colours/type live as CSS custom properties at the top of `assets/main.css`;
-  dark mode keys off `prefers-color-scheme` plus an explicit `data-theme`
-  override. `main.js` only handles theme, the mobile menu, the publication
-  filter and scroll highlighting — everything works without it.
+### A new paper
+
+Create `src/publications/YYYY-MM-DD-short-slug.md`. The filename is only for
+sorting; the public URL comes from the title:
+
+```yaml
+---
+layout: post
+title: "Full title, exactly as published"
+date: "2026-03-14"
+tags: [research]
+type: journal          # journal | conference
+author: "Jun Wu"       # marks you in the author list (bold, no colour)
+authors:
+  - "First Author"
+  - "Jun Wu"
+venue: "IEEE Transactions on ..."
+venue_url: "https://doi.org/10.xxxx/yyyy"
+paper: "https://doi.org/10.xxxx/yyyy"
+code: "https://github.com/wujunzero/repo"   # optional
+eleventyComputed:
+  permalink: "{{ title | slugify }}/"
+---
+```
+
+Nothing else needs touching — the homepage groups by year through the
+`groupByYear` filter and the type buttons count themselves.
+
+> **The title is the URL.** `permalink` is `{{ title | slugify }}`, so editing
+> the title of a paper that is already online silently breaks every inbound
+> link. If a title really has to change, pin the old path with an explicit
+> `permalink: "old-slug/"`.
+
+### A news line
+
+Append to `src/data/news.json`. **Array order is display order and the first
+entry becomes "last updated"**, so insert the newest at the top:
+
+```json
+{ "date": "2026.03", "text": "Paper on … accepted at …" }
+```
+
+### Syncing with Google Scholar
+
+1. Open <https://scholar.google.com/citations?user=xhn6R7EAAAAJ&hl=en&pagesize=100>
+2. Compare against `src/publications/`; anything missing is a new entry
+3. For each new one, look up the DOI and take the title from the **publisher**,
+   not from Scholar — Scholar OCR has misread titles before (`In-Label` came
+   back as `Io-Label`)
+4. Add the `.md` with full author names, not Scholar's initials
+
+SSRN preprints are deliberately not listed. Add one with `type: preprint` only
+if you decide it belongs on the page.
+
+### Everything else
+
+| Change | Where |
+|---|---|
+| Email, ORCID, Scholar / DBLP / Semantic Scholar URLs | `src/data/site.json` (single source) |
+| Projects, Teaching | the matching `<section>` in `src/pages/home.html` |
+| Recruiting banner | flip `show_recruit` at the top of `pages/home.html` |
+| Colours, type scale, spacing | CSS custom properties at the top of `src/assets/main.css` |
+| Nav items | `src/includes/nav.html` plus the matching section `id` in `home.html` |
+
+### Before pushing
+
+```bash
+rm -rf dist && npm run build
+xmllint --noout dist/rss.xml dist/sitemap.xml
+find dist -name '*.html' | wc -l     # papers + index + 404
+```
+
+A push to `main` triggers Pages deployment (about 25 s); `dist/` is never
+committed.
 
 ## GitHub Pages CI
 
