@@ -22,16 +22,7 @@
   document as JS-capable so CSS can collapse the nav into a menu button. Without
   JS the nav links stay visible and usable.
 {%- endcomment -%}
-<script>
-  (function () {
-    var d = document.documentElement;
-    d.classList.add("js");
-    try {
-      var t = localStorage.getItem("theme");
-      if (t === "light" || t === "dark") d.setAttribute("data-theme", t);
-    } catch (e) {}
-  })();
-</script>
+<script>(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t)}catch(e){}})()</script>
 
 <link rel="shortcut icon" href="{{ '/assets/favicon.ico' | url }}">
 <meta name="description" content="{{ site.description }}">

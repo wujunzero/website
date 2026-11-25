@@ -11,6 +11,7 @@
   --text: #16181d;
   --muted: #6b7280;
   --border: #e5e7eb;
+  --border-strong: #8a8f98;
   --accent: #14508c;
 
   --serif: "Source Serif 4", Georgia, "Songti SC", "Noto Serif SC", serif;
@@ -28,6 +29,7 @@
   --text: #e6e8eb;
   --muted: #9aa3af;
   --border: #262b33;
+  --border-strong: #5b6470;
   --accent: #7fb0e0;
 }
 
@@ -38,6 +40,7 @@
     --text: #e6e8eb;
     --muted: #9aa3af;
     --border: #262b33;
+    --border-strong: #5b6470;
     --accent: #7fb0e0;
   }
 }
@@ -138,6 +141,18 @@ ol {
 .skip:focus {
   left: 8px;
   top: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* 3. Header ---------------------------------------------------------------- */
@@ -390,7 +405,7 @@ ol {
 
 .segmented button[aria-pressed="true"] {
   background: var(--bg);
-  border-color: var(--border);
+  border-color: var(--border-strong);
   color: var(--text);
   font-weight: 600;
 }

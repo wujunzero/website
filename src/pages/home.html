@@ -87,6 +87,7 @@ eleventyComputed:
         {%- endfor %}
       </div>
     </div>
+    <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
 
     {%- for y in years %}
     <section class="year-group" data-year-group="{{ y.year }}">

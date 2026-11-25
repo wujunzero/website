@@ -1,7 +1,6 @@
 (function () {
   var root = document.documentElement;
 
-  // Theme: system by default, an explicit choice wins.
   var toggle = document.getElementById("theme-toggle");
   if (toggle) toggle.onclick = function () {
     var stored = null;
@@ -12,7 +11,6 @@
     try { localStorage.setItem("theme", dark ? "light" : "dark"); } catch (e) {}
   };
 
-  // Menu.
   var btn = document.getElementById("menu-toggle");
   var nav = document.getElementById("site-nav");
   if (btn && nav) {
@@ -37,28 +35,32 @@
     });
   }
 
-  // Filter: hide items, then hide year groups left empty.
+  // Filter: hide items, hide empty year groups, announce the count.
   var seg = document.querySelector(".segmented");
   if (seg) {
     var btns = seg.querySelectorAll("button");
     var items = document.querySelectorAll(".pub");
     var groups = document.querySelectorAll("[data-year-group]");
+    var status = document.getElementById("filter-status");
     seg.addEventListener("click", function (e) {
       var b = e.target.closest("button");
       if (!b) return;
       btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b); });
       var want = b.getAttribute("data-filter");
+      var shown = 0;
       items.forEach(function (li) {
         li.hidden = want !== "all" && li.getAttribute("data-type") !== want;
+        if (!li.hidden) shown++;
       });
       groups.forEach(function (g) {
         g.hidden = !g.querySelector(".pub:not([hidden])");
       });
+      if (status) status.textContent = shown + " of " + items.length + " papers shown";
     });
   }
 
   // Scroll spy.
-  if (window.IntersectionObserver) {
+  if (IntersectionObserver) {
     var current = null;
     document.querySelectorAll("#site-nav a[href*='#']").forEach(function (a) {
       var el = document.getElementById(a.getAttribute("href").split("#")[1] || "");
